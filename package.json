@@ -1,0 +1,35 @@
+{
+  "name": "RestaurantApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm start",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "keywords": [],
+  "author": "Anis Zarrouk",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "bcrypt": "^5.0.1",
+    "concurrently": "^6.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.5",
+    "nodemon": "^2.0.12",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "react-css-loaders": "0.0.6",
+    "react-loader-spinner": "^4.0.0",
+    "react-redux": "^7.2.5",
+    "react-spinners": "^0.11.0",
+    "react-spinners-css": "^2.0.1",
+    "reactstrap": "^8.10.0",
+    "redux-devtools-extension": "^2.13.9"
+  }
+}

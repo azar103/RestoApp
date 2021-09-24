@@ -1,0 +1,55 @@
+.form-login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    width: 50%;
+}
+.form-login h2{
+    color: var(--primary-color);
+    text-align: left;
+    font-size: 30px;
+}
+
+.form-login form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.form-login form input {
+    border: none;
+    outline: none;
+    background-color: #eee;
+}
+
+input[type="text"], input[type="password"]{
+    min-width: 200px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.form-login form label {
+    margin-bottom: 10px;
+    color: gray;
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.form-login form a {
+    color: var(--secondry-color);
+    margin-bottom: 10px;
+    font-size: 1rem;
+    text-decoration: underline;
+
+}
+
+.form-login form input[type="submit"]{
+    background: var(--primary-color);
+    color: white;
+    width: 30%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 3%;
+}

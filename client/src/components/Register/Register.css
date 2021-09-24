@@ -1,0 +1,57 @@
+.form-register {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+
+    transform: translate(-50%,-50%);
+    width: 50%;
+   
+
+}
+.form-register h2{
+    color: var(--primary-color);
+    text-align: left;
+    font-size: 30px;
+}
+
+.form-register form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.form-register form input {
+    border: none;
+    outline: none;
+    background-color: #eee;
+}
+
+input[type="text"], input[type="password"]{
+    min-width: 200px;
+    margin-bottom: 13px;
+    padding: 10px;
+}
+
+.form-login form label {
+    margin-bottom: 10px;
+    color: gray;
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.form-register form a {
+    color: var(--secondry-color);
+    margin-bottom: 10px;
+    font-size: 1rem;
+    text-decoration: underline;
+
+}
+
+.form-register form input[type="submit"]{
+    background: var(--primary-color);
+    color: white;
+    width: 30%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 3%;
+}

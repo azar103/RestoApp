@@ -1,0 +1,98 @@
+.about span{
+    color: var(--primary-color);
+    text-transform: capitalize;
+    font-size: 2rem;
+}
+
+.about-header {
+    text-align: center;
+}
+.about-header h2{
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+.about-content{
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.about-content .image {
+    flex: 1 1 45rem;
+}
+.about-content .about-description {
+    flex: 1 1 45rem;
+}
+.about-content .image img {
+    width: 100%;
+}
+
+.about-description h3{
+    font-size: 3rem;
+    text-transform: capitalize;
+}
+
+.about-description p {
+    line-height: 1.6;
+    padding-bottom: .5rem;
+}
+.about-description a{
+    display: block;
+    width: 150px;
+    border-radius: 5px;
+    padding: 10px 0;
+    text-transform: capitalize;
+    text-decoration: none;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: white;
+
+}
+
+.icons-container{
+    display: flex;
+    margin-bottom: 20px;
+}
+.icons-container .icons{
+    background: #eee;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 17rem;
+}
+
+.icons-container .icons span {
+    font-size: 0.9rem;
+    color: black;
+    margin-left: 5px;
+
+}
+.icons-container .icons.second {
+    margin: 0 5%;
+}
+
+.icons-container .icons i {
+    color: var(--primary-color);
+}
+
+
+.about-description a:hover {
+    background: #fff;
+    color: var(--primary-color);
+    border: var(--primary-color) 1px solid;
+    transition: .5s color;
+
+}
+@media (max-width: 991px){
+    .about-content {
+        display: flex;
+        flex-direction: column;
+    }
+    .about-content .about-description {
+        display: flex;
+        flex-direction: column;
+    }
+   
+}

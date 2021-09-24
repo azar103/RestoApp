@@ -1,0 +1,57 @@
+:root{
+  --primary-color: #F54749;
+  --secondary-color: #353951;
+  --light-red: #FFF6F7;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--light-red);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Nunito', sans-serif;
+}
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button{
+  border:none;
+  outline: none;
+  color: white;
+  background: tomato;
+}
+
+.opacity:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.message-error{
+  background-color: var(--primary-color);
+  color: white;
+  padding: 8px;
+  min-width: 100px;
+  border-radius: 4px;
+  margin-top: 5px;
+}

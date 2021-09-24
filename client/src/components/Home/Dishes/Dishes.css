@@ -1,0 +1,15 @@
+.dishes {
+    background: #EEEEEE;
+}
+.dishes span{
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+
+.dishes-header {
+    text-align: center;
+}
+.dishes-header h2{
+    font-size: 2em;
+    text-transform: uppercase;
+}

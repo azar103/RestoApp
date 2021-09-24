@@ -1,0 +1,13 @@
+export const ACTION = "ACTION";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const GET_AUTH_ME = "GET_AUTH_ME";
+export const IS_LOADING = "IS_LOADING";
+export const SET_LOADING = "SET_LOADING";
+export const LOGOUT = "LOGOUT";
+export const NOT_LOADING = "NOT_LOADING";
+export const GET_ERRORS = "GET_ERRORS";
+export const CLEAR_ERRORS = "ClEAR_ERRORS";
+export const LOGIN_ERROR = "LOGIN_ERROR";
+export const REGISTER_ERROR = "REGISTER_ERROR";
+export const AUTH_ERROR = "AUTH_ERROR";
