@@ -10,7 +10,8 @@ const Register = () => {
         firstName: '',
         lastName: '',
         email: '',
-        password:''
+        password: '',
+        passwordConfirmed: ''
     });
     const history = useHistory();
     const dispatch = useDispatch();
@@ -85,6 +86,8 @@ const Register = () => {
                     <input type="password"
                         placeholder="confirm your password..."
                         onChange={handleChangeForm}
+                        value={formData.passwordConfirmed}
+                        name="passwordConfirmed"
                     />
                     <Link to="/login">
                         if you have already an account, login here

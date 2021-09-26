@@ -3,9 +3,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 exports.register = async (req, res, next) => {
     try {
-        const { firstName, lastName, email, password } = req.body;
-        if (!email || !firstName || !lastName || !email || !password) {
+        const { firstName, lastName, email, password, passwordConfirmed } = req.body;
+        if (!email || !firstName || !lastName || !email || !password || !passwordConfirmed) {
             return res.status(500).send({ msg: 'please enter all fields' });
+        }
+        if (password !== passwordConfirmed) {
+            return res.status(500).send({msg: 'passwords are not matched'})
         }
         let user = await User.findOne({ email });
         if (user) {

@@ -14,7 +14,7 @@ const Header = () => {
             <div className="container">
                 <div className="header-content">
                    <Link to="/">
-                        <i className="fas fa-utensils logo"></i><span>Resto.</span>
+                        <i className="fas fa-utensils logo"></i><span className="logo_label">Resto.</span>
                     </Link>      
                     <input type="checkbox" id="check" />
                     <input type="search" className="search"

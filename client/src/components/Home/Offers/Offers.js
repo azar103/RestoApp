@@ -5,14 +5,30 @@ import schicken from '../../../assets/images/home-img-2.png';
 import pizza from '../../../assets/images/home-img-3.png';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination } from 'swiper';
-
+import { useSelector } from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
 // swiper core styles
 import 'swiper/swiper-bundle.css';
 
 SwiperCore.use(Pagination);
 const Offers = () => {
-
+    const isAuth = useSelector(state => state.auth.isAuth);
+    const history = useHistory();
+    const buttonAuth = () => {
+        if (!isAuth) {
+            return (
+                <button className="opacity"
+                onClick={() => history.push('/login')}
+                >order now</button>
+            )
+        } else {
+            return (
+                <button className="opacity"
+                >order now</button>
+            )
+        }
+    }
     return (
         <div className="offers">
             <div className="container">
@@ -30,7 +46,7 @@ const Offers = () => {
                     <p>Consequat exercitation veniam Lorem tempor labore id anim sit.
                     Nulla labore amet deserunt fugiat.
                         </p>
-                        <button className="opacity">order now</button>
+                        {buttonAuth()}
                     </div>
                     <div className="offers-img">
                         <img src={noodle} alt="dish" />
@@ -44,8 +60,11 @@ const Offers = () => {
                     <h1>Fried Schicken</h1>
                     <p>Consequat exercitation veniam Lorem tempor labore id anim sit.
                     Nulla labore amet deserunt fugiat.
-                        </p>
-                        <button>order now</button>
+                                    </p>
+                                 
+                    {buttonAuth()}
+                                            
+                                      
                     </div>
                     <div className="offers-img">
                         <img src={schicken} alt="dish" />
@@ -60,7 +79,7 @@ const Offers = () => {
                     <p>Consequat exercitation veniam Lorem tempor labore id anim sit.
                     Nulla labore amet deserunt fugiat.
                         </p>
-                        <button>order now</button>
+                        {buttonAuth()}
                     </div>
                     <div className="offers-img">
                         <img src={pizza} alt="dish" />

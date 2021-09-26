@@ -12,6 +12,11 @@
     align-items: center;
     padding: 10px 0;
 }
+
+.header-content >a .logo_label {
+    color: var(--primary-color);
+    margin-left: 5px;
+}
 .menu {
    display: flex; 
 }

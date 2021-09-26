@@ -8,7 +8,7 @@ const About = () => {
             <div className="about-header">
          
                         <span>about us</span>
-                        <h2>why choose use ?</h2>
+                        <h2>why choose us ?</h2>
                  
             </div>
             <div className="container">
