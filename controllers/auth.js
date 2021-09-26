@@ -66,3 +66,21 @@ exports.authMe = async (req, res, next) => {
    res.status(200).send({user: userFound})
 }
 
+exports.getUsers = async (req, res, next) => {
+    try {
+        const users = await User.find();
+        res.status(200).send(users);
+    } catch (error) {
+        res.status(500).send({ error });
+    }
+}
+
+exports.checkAdmin = async (req, res, next) => {
+    try {
+        const { email } = req.body;
+        const user = await User.findOne({ email });
+        res.status(200).send({isAdmin: user.isAdmin});
+    } catch (error) {
+        
+    }
+}

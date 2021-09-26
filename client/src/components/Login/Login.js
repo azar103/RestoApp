@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import './Login.css'
-import { login } from '../../Store/actions/authActions';
+import { login} from '../../Store/actions/authActions';
 import { clearErrors } from '../../Store/actions/errorActions';
 import Loading from '../Loading/Loading';
 
@@ -13,12 +13,15 @@ const Login = () => {
         email: '',
         password:''
     });
+    const user = useSelector(state => state.auth.user)
     const error = useSelector(state => state.error);
     const isAuth = useSelector(state => state.auth.isAuth);
+    const isAdmin = useSelector(state => state.auth.isAdmin);
     const loading = useSelector(state => state.auth.isLoading);
     const [msg, setMsg] = useState(null);
-
+     console.log(isAdmin);
     useEffect(() => {
+
         if (error.id === 'LOGIN_ERROR') {
             setMsg(error.msg.msg)
         } else {
@@ -26,8 +29,10 @@ const Login = () => {
         }  
     }, [error.msg]);
     useEffect(() => {
-        if (isAuth) {
-            history.push('/')
+        if (isAuth && !isAdmin) {
+            history.push('/');
+        } else if (isAuth && isAdmin) {
+            history.push('/admin');
         }
         dispatch(clearErrors())
     }, [isAuth, clearErrors])

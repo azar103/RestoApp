@@ -11,3 +11,4 @@ export const CLEAR_ERRORS = "ClEAR_ERRORS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 export const REGISTER_ERROR = "REGISTER_ERROR";
 export const AUTH_ERROR = "AUTH_ERROR";
+export const IS_ADMIN = "IS_ADMIN";
