@@ -5,18 +5,18 @@ import Dishes from './Dishes/Dishes';
 import Loading from '../Loading/Loading';
 import Offers from './Offers/Offers';
 import Review from './Review/Review';
-import Admin from '../Admin/Admin';
 import './Home.css';
+import Users from '../Admin/Users/Users';
 
 const Home = () => {
     const loading = useSelector(state => state.auth.isLoading);
-    const user = useSelector(state => state.auth.user);
+    let  user = useSelector(state => state.auth.user);
     if (loading) {
         return <Loading
         />
     }
     if (user && user.isAdmin) {
-        return <Admin />
+        return <Users />
     } else {
         return (
             <div className="home">

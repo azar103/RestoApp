@@ -1,10 +1,11 @@
-import { AUTH_ERROR, GET_AUTH_ME, IS_ADMIN, IS_LOADING, LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT, NOT_LOADING, REGISTER_ERROR, REGISTER_SUCCESS } from '../actions/actionTypes';
+import { AUTH_ERROR, GET_AUTH_ME, GET_USERS, IS_ADMIN, IS_LOADING, LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT, NOT_LOADING, REGISTER_ERROR, REGISTER_SUCCESS } from '../actions/actionTypes';
 const initState = {
     isAuth: false,
     isLoading: false,
     user: null,
     token: localStorage.getItem('token'),
-    isAdmin: false
+    isAdmin: false,
+    users: []
 }
 
 const authReducer = (state = initState, { type, payload }) => {
@@ -46,6 +47,12 @@ const authReducer = (state = initState, { type, payload }) => {
                 isLoading: false,
                 ...payload
             }
+        case GET_USERS:
+            return {
+                ...state,
+                isLoading:false,
+                users: [...payload]
+        }    
         case LOGOUT:
         case LOGIN_ERROR:
         case REGISTER_ERROR:

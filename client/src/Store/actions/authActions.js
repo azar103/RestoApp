@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_ERROR, GET_AUTH_ME,IS_ADMIN,IS_LOADING,LOGIN_ERROR,LOGIN_SUCCESS, LOGOUT, NOT_LOADING, REGISTER_ERROR, REGISTER_SUCCESS} from './actionTypes';
+import { AUTH_ERROR, GET_AUTH_ME,GET_USERS,IS_ADMIN,IS_LOADING,LOGIN_ERROR,LOGIN_SUCCESS, LOGOUT, NOT_LOADING, REGISTER_ERROR, REGISTER_SUCCESS} from './actionTypes';
 import { returnErrors } from './errorActions';
 export const login = (formData) => async dispatch => {
     dispatch(setLoading())
@@ -83,15 +83,25 @@ export const logout = () => async dispatch => {
         
     }
 }
-export const setLoading = () => {
+const setLoading = () => {
     return {
         type: IS_LOADING
     }
 }
 
-export const notLoading = () => {
-    return {
-        type: NOT_LOADING
+
+
+export const getUsers = () => async dispatch => {  
+ 
+    try {
+        const res = await axios.get('http://localhost:5000/api/auth/');
+        setTimeout(() => {
+            dispatch({
+                type: GET_USERS,
+                payload: res.data
+            })
+        }, 3000);
+    } catch (error) {
+      
     }
 }
-

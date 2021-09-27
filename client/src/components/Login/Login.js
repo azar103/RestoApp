@@ -16,10 +16,9 @@ const Login = () => {
     const user = useSelector(state => state.auth.user)
     const error = useSelector(state => state.error);
     const isAuth = useSelector(state => state.auth.isAuth);
-    const isAdmin = useSelector(state => state.auth.isAdmin);
+    const isAdmin = useSelector(state => state.auth.user);
     const loading = useSelector(state => state.auth.isLoading);
     const [msg, setMsg] = useState(null);
-     console.log(isAdmin);
     useEffect(() => {
 
         if (error.id === 'LOGIN_ERROR') {
@@ -29,11 +28,9 @@ const Login = () => {
         }  
     }, [error.msg]);
     useEffect(() => {
-        if (isAuth && !isAdmin) {
+        if (isAuth) {
             history.push('/');
-        } else if (isAuth && isAdmin) {
-            history.push('/admin');
-        }
+        } 
         dispatch(clearErrors())
     }, [isAuth, clearErrors])
   

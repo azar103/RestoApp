@@ -1,4 +1,5 @@
-import { GET_FOODS } from "../actions/foodActions";
+import { GET_FOODS } from "../actions/actionTypes";
+
 
 const initState = {
     foods: [
@@ -20,24 +21,6 @@ const initState = {
             url: 'https://i.postimg.cc/3xk0WzgC/dish-3.png',
             price: 15.9,
         },
-        {
-            id: 4,
-            name: 'Tasty Food',
-            url: 'https://i.postimg.cc/Fs8sCzL3/dish-4.png',
-            price: 15.9,
-        },
-        {
-            id: 5,
-            name: 'Tasty Food',
-            url: 'https://i.postimg.cc/0Qysy1S9/dish-5.png',
-            price: 15.9,
-        },
-        {
-            id: 6,
-            name: 'Tasty Food',
-            url: 'https://i.postimg.cc/gkZPJDxL/dish-6.png',
-            price: 15.9,
-        }
     ]
 }
 

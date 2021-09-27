@@ -1,2 +1,10 @@
-export const ACTION = "ACTION";
-export const GET_FOODS = "GET_FOODS";
+
+export const getAllFoods = () => async dispatch => {
+    
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+

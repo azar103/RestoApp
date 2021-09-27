@@ -137,6 +137,36 @@ input[type="checkbox"]{
     min-width: 400px;
 }
 
+#menu {
+    margin-right: 10px;
+    position: relative;   
+    cursor: pointer;
+}
+
+.dropdown{
+    position: absolute;
+    display: none;
+}
+#menu:hover > .dropdown{
+    display: block;
+    background: #fff;
+    border-radius: 10%;
+    top: 25px;
+    padding: 10px;
+}
+#menu> .dropdown > li > a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 5px;
+    width: 100%;
+    
+}
+#menu> .dropdown > li > a:hover {
+    color: var(--primary-color);
+    
+}
+
 @media (max-width: 991px){
     .menu-icons label{
         visibility: visible;

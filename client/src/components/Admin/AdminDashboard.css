@@ -1,0 +1,30 @@
+.dashboard{
+  position: absolute;
+  top: 20%;
+  width: 100%;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 30px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+  @media (max-width: 991px){
+      table {
+          width: 100%;
+          top: 60%;
+      }
+  }
+

@@ -12,8 +12,8 @@ import Contact from './components/Contact/Contact';
 import Favorites from './components/Favorites/Favorites';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import ProtectedRoute from './components/Routes/ProtectedRoute';
-import Admin from './components/Admin/Admin';
-
+import Users from './components/Admin/Users/Users';
+import Foods from './components/Admin/Foods/Foods';
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.auth.user);
@@ -22,16 +22,9 @@ function App() {
   }, [])
   return (
     <BrowserRouter>
-      {
-        !user.isAdmin ?
-          <Header />
-          :
-        null  
-           
-      }
-          
  
-     
+          <Header />
+        
       <Switch>
         <Route exact path="/"  component={Home} />
         <Route path="/login" component={Login} />
@@ -39,7 +32,9 @@ function App() {
         <Route path="/contact" component={Contact} />
         <ProtectedRoute path="/favorites" component={Favorites} />
         <ProtectedRoute path="/shopping-cart" component={ShoppingCart} />
-        <ProtectedRoute path="/admin" component={Admin}/>
+
+        <ProtectedRoute path="/admin/users" component={Users} />
+        <ProtectedRoute path="/admin/foods" component={Foods} />
       </Switch>
       <Footer />  
     </BrowserRouter>

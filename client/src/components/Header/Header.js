@@ -8,7 +8,6 @@ const Header = () => {
     const user = useSelector(state => state.auth.user);
     const history = useHistory();
     const dispatch = useDispatch();
-    console.log(isAuth);
     return (
         <div className="header">
             <div className="container">
@@ -23,10 +22,21 @@ const Header = () => {
                     <div className="menu-icons">
                         {
                             isAuth ?
+                                !user.isAdmin ?
                                 <span style={{
                                     marginRight: '10px',
                       
-                             }}>Hello, {`${user.firstName} ${user.lastName}`}</span>
+                                    }}>Hello, {`${user.firstName} ${user.lastName}`}</span>
+                                    :
+                                    <span id="menu">Admin <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                        <ul className="dropdown">
+                                            <li><Link to="/admin/users">Users</Link></li>
+                                            <li><Link to="/admin/foods">Foods</Link></li>
+                                            <li><a href="#">Orders</a></li>
+                                        </ul>
+                                    </span>
+                                
+                                
                                 :
                             null                    
                         }
