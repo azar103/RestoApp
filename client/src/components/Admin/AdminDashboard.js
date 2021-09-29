@@ -1,6 +1,12 @@
 import React from 'react'
-import './AdminDashboard.css'
-const AdminDashboard = ({children}) => {
+import Loading from '../Loading/Loading';
+import './AdminDashboard.css';
+import {useSelector} from 'react-redux';
+const AdminDashboard = ({ children }) => {
+    const loading = useSelector(state => state.auth.isLoading);
+    if (loading) {
+        return <Loading />
+    }
     return (
         <div className="dashboard">
            <div className="container">

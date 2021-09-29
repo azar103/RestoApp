@@ -10,10 +10,9 @@ import Users from '../Admin/Users/Users';
 
 const Home = () => {
     const loading = useSelector(state => state.auth.isLoading);
-    let  user = useSelector(state => state.auth.user);
+    let user = useSelector(state => state.auth.user);
     if (loading) {
-        return <Loading
-        />
+        return <Loading />
     }
     if (user && user.isAdmin) {
         return <Users />

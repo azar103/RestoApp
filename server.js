@@ -2,8 +2,10 @@ const express = require('express');
 const connectDB = require('./config/connectDB');
 const authRouter = require('./routers/auth');
 const foodRouter = require('./routers/foods');
+const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const app = express();
+app.use(fileUpload());
 
 const port = 5000 || process.env.PORT;
 

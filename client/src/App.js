@@ -14,17 +14,15 @@ import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import ProtectedRoute from './components/Routes/ProtectedRoute';
 import Users from './components/Admin/Users/Users';
 import Foods from './components/Admin/Foods/Foods';
+import AddFood from './components/Admin/AddFood/AddFood';
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.auth.user);
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [])
   return (
     <BrowserRouter>
- 
-          <Header />
-        
+      <Header />  
       <Switch>
         <Route exact path="/"  component={Home} />
         <Route path="/login" component={Login} />
@@ -35,6 +33,7 @@ function App() {
 
         <ProtectedRoute path="/admin/users" component={Users} />
         <ProtectedRoute path="/admin/foods" component={Foods} />
+        <ProtectedRoute path="/admin/createFood" component={AddFood}/>
       </Switch>
       <Footer />  
     </BrowserRouter>

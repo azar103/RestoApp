@@ -14,3 +14,5 @@ export const AUTH_ERROR = "AUTH_ERROR";
 export const IS_ADMIN = "IS_ADMIN";
 export const GET_USERS = "GET_USERS";
 export const GET_FOODS = "GET_FOODS";
+export const CREATE_FOOD = "CREATE_FOOD";
+export const DELETE_FOOD = "DELETE_FOOD";

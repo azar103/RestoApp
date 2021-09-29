@@ -7,10 +7,6 @@ export const login = (formData) => async dispatch => {
         const res = await axios.post('http://localhost:5000/api/auth/login', formData);
         setTimeout(() => {
             dispatch({
-                type: IS_ADMIN,
-                payload: res.data
-            })
-            dispatch({
                 type: LOGIN_SUCCESS,
                 payload: res.data
             })

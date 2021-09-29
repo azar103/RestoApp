@@ -55,3 +55,9 @@ input[type="text"], input[type="password"]{
     border: none;
     border-radius: 3%;
 }
+
+input[type="text"]:focus{
+    border: 1px solid var(--primary-color);
+    transition: .5s border;
+  }
+  

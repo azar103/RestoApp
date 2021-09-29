@@ -42,7 +42,6 @@ input[type="text"], input[type="password"]{
     margin-bottom: 10px;
     font-size: 1rem;
     text-decoration: underline;
-
 }
 
 .form-login form input[type="submit"]{
@@ -53,3 +52,9 @@ input[type="text"], input[type="password"]{
     border: none;
     border-radius: 3%;
 }
+
+input:focus{
+    border: 1px solid var(--primary-color);
+    transition: .5s border;
+  }
+  

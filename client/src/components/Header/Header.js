@@ -23,10 +23,18 @@ const Header = () => {
                         {
                             isAuth ?
                                 !user.isAdmin ?
+                                    <>
                                 <span style={{
                                     marginRight: '10px',
                       
                                     }}>Hello, {`${user.firstName} ${user.lastName}`}</span>
+                                    <Link to="/favorites">
+                                    <i className="fas fa-heart icon"></i>
+                                 </Link>
+                                 <Link to="shopping-cart">
+                                    <i className="fas fa-shopping-cart icon"></i>
+                                        </Link>
+                                        </>
                                     :
                                     <span id="menu">Admin <i class="fa fa-chevron-down" aria-hidden="true"></i>
                                         <ul className="dropdown">
@@ -36,16 +44,12 @@ const Header = () => {
                                         </ul>
                                     </span>
                                 
-                                
                                 :
                             null                    
                         }
-                        <Link to="/favorites">
-                           <i className="fas fa-heart icon"></i>
-                        </Link>
-                        <Link to="shopping-cart">
-                           <i className="fas fa-shopping-cart icon"></i>
-                        </Link>
+
+                    
+            
                         {
                             isAuth ?
                             <Link className="btn-login opacity"

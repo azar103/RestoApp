@@ -4,7 +4,6 @@ const initState = {
     isLoading: false,
     user: null,
     token: localStorage.getItem('token'),
-    isAdmin: false,
     users: []
 }
 
@@ -16,18 +15,9 @@ const authReducer = (state = initState, { type, payload }) => {
                 ...state,
                 isAuth: true,
                 isLoading: false,
-                isAdmin:false,
                 ...payload,
                 token: localStorage.setItem('token', payload.token)
             }
-        case IS_ADMIN:
-            return {
-                ...state,
-                isAuth: true,
-                isLoading: false,
-                ...payload,
-                token: localStorage.setItem('token', payload.token)
-             }    
         case IS_LOADING: {
             return {
                 ...state,

@@ -4,12 +4,19 @@ header{
     align-items: center;
 }
 
-header button {
+header a {
     padding: 10px;
     border-radius: 13px;
     color: white;
     border:none;
     outline: none;
     min-width: 170px;
+    display: block;
+    text-decoration: none;
+    background: var(--primary-color);
+    text-align: center;
 }
 
+tbody tr > td > i{
+    cursor: pointer;
+}

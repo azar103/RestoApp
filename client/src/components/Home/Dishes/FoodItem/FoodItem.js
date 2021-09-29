@@ -6,7 +6,7 @@ const FoodItem = ({ item }) => {
     return (
         <div className="food_box">
             <Link to="/"><i className="fas fa-heart icon"/></Link>
-            <img src={item.url}/>
+            <img src={item.urlImg}/>
             <h3>{item.name}</h3>
             <div className="footer">
                 <span>${item.price}</span>

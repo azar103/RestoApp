@@ -1,0 +1,35 @@
+.form_create_food{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 70%;
+
+}
+.form_create_food form label {
+    color: gray;
+    font-weight: normal;
+   display: block;
+   margin: 5px 0;
+}
+.form_create_food input[type="text"] {
+    display: block;
+    border: 1px solid #ddd;
+    outline: none;
+    width: 70%;
+}
+input[type="submit"]{
+    background: var(--primary-color);
+    color: white;
+    min-width: 200px;
+    border-radius: 13px;
+    border:none;
+    outline: none;
+    padding: 10px;
+}
+
+input[type="text"]:focus{
+    border: 1px solid var(--primary-color);
+    transition: .5s border;
+  }
+  

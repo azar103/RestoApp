@@ -1,4 +1,5 @@
 const Food = require('../models/Food');
+const multer = require('multer');
 
 exports.getFoods = async (req, res, next) => {
     try {
@@ -11,13 +12,13 @@ exports.getFoods = async (req, res, next) => {
 
 exports.saveFood = async (req, res, next) => {
     try {
-        const { name, category, price, urlImg } = req.body;
+        const { name, description, price, urlImg } = req.body;
         let food = await Food.findOne({ name });
         if (food) {
             return res.status(400).send({ msg: 'Food already exist' });
         }
-        food = new Food({ name, category, price, urlImg });
-        food.save();
+        food = new Food({ name, description, price, urlImg });
+        await food.save();
         res.status(200).send(food); 
     } catch (error) {
         res.status(500).send({error})
@@ -41,5 +42,14 @@ exports.editFood = async (req, res, next) => {
         res.status(200).send({ msg: 'Food Updated!' });
     } catch (error) {
         res.status(500).send({error})
+    }
+}
+
+
+exports.postImg = (req, res, next) => {
+    try {
+        res.status(200).send(req.files);
+    } catch (error) {
+       console.log({error});
     }
 }
