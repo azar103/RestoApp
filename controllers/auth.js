@@ -5,7 +5,7 @@ exports.register = async (req, res, next) => {
     try {
         const { firstName, lastName, email, password, passwordConfirmed } = req.body;
         if (!email || !firstName || !lastName || !email || !password || !passwordConfirmed) {
-            return res.status(500).send({ msg: 'please enter all fields' });
+            return res.status(500).send({ msg: 'please fill in all the fields' });
         }
         if (password !== passwordConfirmed) {
             return res.status(500).send({msg: 'passwords are not matched'})
@@ -37,7 +37,7 @@ exports.login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
         if (!email || !password) {
-            return res.status(500).send({ msg: 'please enter all fields' });
+            return res.status(500).send({ msg: 'please fill in  all the fields' });
         }
         let user = await User.findOne({ email });
         if (!user) {

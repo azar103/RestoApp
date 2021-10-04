@@ -1,0 +1,6 @@
+tbody tr > td > i{
+    cursor: pointer;
+}
+td > Link i{
+    color: '#a3a3a3';
+}

@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 import AdminDashboard from '../AdminDashboard'
-import { Button, Table } from 'react-bootstrap';
 import {useDispatch, useSelector} from 'react-redux';
 import { getUsers } from '../../../Store/actions/authActions';
 
@@ -10,20 +9,29 @@ const Users = () => {
     useEffect(() => {
          dispatch(getUsers())
     }, [])
+    const [searchedValue, setSearchedValue] = useState('');
+    const onChange = (e) => {
+        setSearchedValue(e.target.value);
+    }
     return (
         <AdminDashboard>
             <h2>Users</h2>
-        <table>
+            <input type="search" className="search search-dashboard"
+        placeholder="search here..."
+        onChange={onChange}
+        value={searchedValue}
+          />
+         <table>
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Last Name</th>
                         <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Email</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {users && users.map((user) => <tr
+                    {users && users.filter((item) => item.firstName.toLowerCase().indexOf(searchedValue.toLowerCase())!== -1).map((user) => <tr
                     key={user._id}
                     >
                         <td>{user._id}</td>

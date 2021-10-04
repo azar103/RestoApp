@@ -17,6 +17,6 @@ header a {
     text-align: center;
 }
 
-tbody tr > td > i{
-    cursor: pointer;
+.search-dashboard{
+    margin: 10px 0;
 }

@@ -15,6 +15,7 @@ import ProtectedRoute from './components/Routes/ProtectedRoute';
 import Users from './components/Admin/Users/Users';
 import Foods from './components/Admin/Foods/Foods';
 import AddFood from './components/Admin/AddFood/AddFood';
+import EditFood from './components/Admin/EditFood/EditFood';
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -33,7 +34,8 @@ function App() {
 
         <ProtectedRoute path="/admin/users" component={Users} />
         <ProtectedRoute path="/admin/foods" component={Foods} />
-        <ProtectedRoute path="/admin/createFood" component={AddFood}/>
+        <ProtectedRoute path="/admin/createFood" component={AddFood} />
+        <ProtectedRoute path="/admin/editFood/:_id" component={EditFood}/>
       </Switch>
       <Footer />  
     </BrowserRouter>

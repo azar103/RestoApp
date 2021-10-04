@@ -20,7 +20,6 @@ const Login = () => {
     const loading = useSelector(state => state.auth.isLoading);
     const [msg, setMsg] = useState(null);
     useEffect(() => {
-
         if (error.id === 'LOGIN_ERROR') {
             setMsg(error.msg.msg)
         } else {

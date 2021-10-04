@@ -1,26 +1,35 @@
 const express = require('express');
-const multer  = require('multer')
+const multer = require('multer');
 const router = express.Router();
 const foodCtrl = require('../controllers/foods');
-var upload = multer()
-var storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, 'uploads');
-     },
-    filename: function (req, file, cb) {
-        cb(null , file.originalname);
+const path = require('path');
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+
+        cb(null, `${Date.now()}_${file.originalname}`);
     }
 });
+const upload = multer({ storage }).single('urlImg');
 
-var upload = multer({storage});
+router.post('/upload', upload, (req, res, next) => {
+    res.send({
+        filename: req.file.originalname,
+        path: req.file.path
+   })
+})
+
 router.get('/', foodCtrl.getFoods);
 
-router.post('/newFood', foodCtrl.saveFood);
+router.post('/newFood',upload, foodCtrl.saveFood);
 
 router.delete('/:_id', foodCtrl.deleteFood);
 
-router.put('/:_id', foodCtrl.editFood);
+router.put('/:_id',upload, foodCtrl.editFood);
 
-router.post('/single', upload.array('profiles', 4), foodCtrl.postImg);
+router.get('/:_id', foodCtrl.getOneFood);
 
 module.exports = router;

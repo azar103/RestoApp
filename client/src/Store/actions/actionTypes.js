@@ -16,3 +16,5 @@ export const GET_USERS = "GET_USERS";
 export const GET_FOODS = "GET_FOODS";
 export const CREATE_FOOD = "CREATE_FOOD";
 export const DELETE_FOOD = "DELETE_FOOD";
+export const GET_ONE_FOOD = "GET_ONE_FOOD";
+export const CREATE_FOOD_ERROR = "CREATE_FOOD_ERROR";

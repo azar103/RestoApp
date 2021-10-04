@@ -1,25 +1,33 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import AdminDashboard from '../AdminDashboard'
 import {useDispatch, useSelector} from 'react-redux';
 import './Foods.css';
 import { Link } from 'react-router-dom';
 import { deleteFood, getAllFoods } from '../../../Store/actions/foodActions';
-import Loading from '../../Loading/Loading';
-import {useHistory} from 'react-router-dom';
+import FoodRow from '../FoodRow/FoodRow';
 const Foods = () => {
   const dispatch = useDispatch();
-
+  const [openPopup, setOpenPopup] = useState(false);
+  const [searchedValue, setSearchedValue] = useState('');
   useEffect(() => {
     dispatch(getAllFoods())
   })
   const foods = useSelector(state => state.foods.foods);
- 
-    return (
+  
+  const onChange = (e) => {
+    setSearchedValue(e.target.value);
+  } 
+  return (
       <AdminDashboard>
          <header>
           <h2>Foods</h2>
           <Link to="/admin/createFood" className="opacity">Create Food</Link>
-         </header> 
+      </header>
+      <input type="search" className="search search-dashboard"
+        placeholder="search here..."
+        onChange={onChange}
+        value={searchedValue}
+          />
          <table>
          <tr>
             <th>ID</th>
@@ -29,22 +37,19 @@ const Foods = () => {
           </tr>
           <tbody>
             {
-              foods && foods.map((food) => <tr key={food._id}>
-                <td>{food._id}</td>
-                <td>{food.name}</td>
-                <td>{food.price}</td>
-                <td><i className="fa fa-edit"></i>
-                  <i className="fa fa-trash" id="trash"
-                    onClick={() => {
-                      dispatch(deleteFood(food))
-                    }}
-                  ></i>
-                </td>
-              </tr>)
+            foods && foods.filter((item) => item.name.toLowerCase().indexOf(searchedValue.toLowerCase())!== -1).map((food) => 
+              <FoodRow item={food}
+                onDeleteClick={() => {
+                   dispatch(deleteFood(food))
+                }}
+              />
+              )
           }  
         </tbody>  
       </table>
-        </AdminDashboard>
+      </AdminDashboard>
+
+
     )
 }
 

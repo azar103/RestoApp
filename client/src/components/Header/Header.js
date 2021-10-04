@@ -16,9 +16,16 @@ const Header = () => {
                         <i className="fas fa-utensils logo"></i><span className="logo_label">Resto.</span>
                     </Link>      
                     <input type="checkbox" id="check" />
-                    <input type="search" className="search"
-                    placeholder="search here..."
-                    />
+                    {
+                        !isAuth || isAuth && !user.isAdmin
+                            ?
+                            <input type="search" className="search"
+                        placeholder="search here..."
+                            />
+                            :
+                            null
+                       }
+                        
                     <div className="menu-icons">
                         {
                             isAuth ?
@@ -47,9 +54,7 @@ const Header = () => {
                                 :
                             null                    
                         }
-
-                    
-            
+    
                         {
                             isAuth ?
                             <Link className="btn-login opacity"

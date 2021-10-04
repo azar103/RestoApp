@@ -1,5 +1,5 @@
 const Food = require('../models/Food');
-const multer = require('multer');
+
 
 exports.getFoods = async (req, res, next) => {
     try {
@@ -12,12 +12,19 @@ exports.getFoods = async (req, res, next) => {
 
 exports.saveFood = async (req, res, next) => {
     try {
-        const { name, description, price, urlImg } = req.body;
+        const { name, description, price } = req.body;
+        const { file } = req;
+        if (!name || !description || !price || !file) {
+            return res.status(400).send({msg:'please fill in all the fields'})
+        }
         let food = await Food.findOne({ name });
+
         if (food) {
             return res.status(400).send({ msg: 'Food already exist' });
         }
-        food = new Food({ name, description, price, urlImg });
+        food = new Food({
+            name, description, price, urlImg:file.path  || null
+        });
         await food.save();
         res.status(200).send(food); 
     } catch (error) {
@@ -38,7 +45,13 @@ exports.deleteFood = async (req, res, next) => {
 exports.editFood = async (req, res, next) => {
     try {
         const { _id } = req.params;
-        await Food.updateOne({ _id }, { $set: { ...req.body } });
+        const { file } = req;
+        await Food.updateOne({ _id }, {
+            $set: {
+                ...req.body,
+                urlImg: file.path || null
+            }
+        });
         res.status(200).send({ msg: 'Food Updated!' });
     } catch (error) {
         res.status(500).send({error})
@@ -51,5 +64,15 @@ exports.postImg = (req, res, next) => {
         res.status(200).send(req.files);
     } catch (error) {
        console.log({error});
+    }
+}
+
+exports.getOneFood = async (req, res, next) => {
+    try {
+        const { _id } = req.params;
+        const food = await Food.findById(_id);
+        res.status(200).send(food);
+    } catch (error) {
+        console.log(error);
     }
 }

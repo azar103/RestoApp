@@ -1,0 +1,15 @@
+.input:focus{
+    border: none; 
+}
+.dialog{
+    display: flex;
+    flex-direction: column;
+}
+
+.input{
+    display: block;
+}
+
+.btn {
+    background-color: #f00;
+}

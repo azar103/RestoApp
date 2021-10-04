@@ -53,8 +53,3 @@ input[type="text"], input[type="password"]{
     border-radius: 3%;
 }
 
-input:focus{
-    border: 1px solid var(--primary-color);
-    transition: .5s border;
-  }
-  
