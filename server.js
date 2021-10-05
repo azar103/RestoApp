@@ -2,7 +2,7 @@ const express = require('express');
 const connectDB = require('./config/connectDB');
 const authRouter = require('./routers/auth');
 const foodRouter = require('./routers/foods');
-
+const cartRouter = require('./routers/cart');
 const cors = require('cors');
 const app = express();
 
@@ -21,6 +21,7 @@ app.use((req, res, next) => {
   });
 app.use('/api/auth', authRouter);
 app.use('/api/foods', foodRouter);
+app.use('/api/cart', cartRouter);
 
 app.listen(port, (err) => {
     if (err) {

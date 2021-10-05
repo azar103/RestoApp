@@ -8,6 +8,10 @@ const Header = () => {
     const user = useSelector(state => state.auth.user);
     const history = useHistory();
     const dispatch = useDispatch();
+    const cartItems = useSelector(state => state.cart.cart);
+    const numberOfItems = () => {
+        return cartItems.filter(item => item.userId === user._id).length;
+    }
     return (
         <div className="header">
             <div className="container">
@@ -16,15 +20,7 @@ const Header = () => {
                         <i className="fas fa-utensils logo"></i><span className="logo_label">Resto.</span>
                     </Link>      
                     <input type="checkbox" id="check" />
-                    {
-                        !isAuth || isAuth && !user.isAdmin
-                            ?
-                            <input type="search" className="search"
-                        placeholder="search here..."
-                            />
-                            :
-                            null
-                       }
+            
                         
                     <div className="menu-icons">
                         {
@@ -38,8 +34,11 @@ const Header = () => {
                                     <Link to="/favorites">
                                     <i className="fas fa-heart icon"></i>
                                  </Link>
-                                 <Link to="shopping-cart">
-                                    <i className="fas fa-shopping-cart icon"></i>
+                                    <Link to="shopping-cart">
+                            
+                                            <i className="fas fa-shopping-cart icon">
+                                            <div className="notification">{numberOfItems()}</div>
+                                            </i>
                                         </Link>
                                         </>
                                     :

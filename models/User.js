@@ -9,7 +9,7 @@ const UserSchema = new Schema({
     password: { type: String, required: true },
     passwordConfirmed:{type: String},
     email: { type: String, required: true },
-    isAdmin: {type: Boolean, required:true, default:false}
+    isAdmin: { type: Boolean, required: true, default: false },
 },
 {timestamps: true}
 )

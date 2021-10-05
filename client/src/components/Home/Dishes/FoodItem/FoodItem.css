@@ -2,84 +2,52 @@
     background: #fff;
     border: .1rem solid rgba(0, 0, 0 ,0.2);
     border-radius: .5rem;
-    box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
+    width: 33%;
+    height: 130px;
+
+    display: flex;
 
 }
-
-.food_box .image{
-    height: 20rem;
-    width: 100%;
-    padding: 1.5rem;
-    overflow: hidden;
-    position: relative;
+.food_box:nth-child(2){
+    margin:  0 5px;
+}
+.food_box h3{
+    text-transform: capitalize;
+}
+.food_box .image {
+    flex: 5;
+    background-size: cover;
 }
 .food_box .image img {
-    height: 100%;
     width: 100%;
-    border-radius: .5rem;
+    height: 100%;
 }
 
-.fa-heart{
-    position: absolute;
-    top:2.5rem; right: 2.5rem;
-    height: 5rem;
-    width: 5rem;
-    line-height: 5rem;
-    text-align: center;
-    font-size: 2rem;
-    background: #fff;
-    border-radius: 50%;
-    color:var(--secondary-color);
-}
-
-
-.content h3{
-    color:var(--black);
-    font-size: 2.5rem;
-}
-
-.content p{
-    color:#666;
-    font-size: 1.6rem;
-    padding:.5rem 0;
-    line-height: 1.5;
-}
-
-
-.content{
+.food_box .content {
+    padding: 10px;
     display: flex;
+    flex: 7;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 0 1.5rem;
+    justify-content: space-between;
 }
-.content h3{
-    padding:.5rem 0;
-    font-size: 1.5rem;
-    color:var(--secondary-color);
-    text-transform: capitalize;
-}
-.btn-price {
-    display: flex;
+.btn-price{
     flex-direction: row;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-.btn-price > .price {
-    font-size: 2rem;
+
 }
 .btn-price .btn {
-    margin-top: 1rem;
-    display: inline-block;
-    font-size: 1.2rem;
-    color: #fff;
-    background: var(--primary-color);
-    border-radius: .5rem;
-    cursor: pointer;
-    padding: .8rem 3rem;
-    text-transform: capitalize;
+    background-color: var(--secondary-color);
+    color: white;
+    margin-left: 10px;
+    padding: 5px 20px;
+    border-radius: 3%;
+    text-transform: uppercase;
 }
-@media (max-width: 991px){
-    .food_box{
-        width: 100%;
-    }
+.btn-price .price{
+    color: #000;
+    font-size: 1rem;
+}
+.content p {
+    color: gray;
+    font-weight: normal;
+    margin: 8px 0;
 }

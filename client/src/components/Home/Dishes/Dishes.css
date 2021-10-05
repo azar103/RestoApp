@@ -6,10 +6,15 @@
     font-size: 2rem;
 }
 
-.dishes-header {
-    text-align: center;
-}
+
 .dishes-header h2{
-    font-size: 2em;
+    font-size: 1.5rem;
     text-transform: uppercase;
+
+}
+.dishes-header header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }

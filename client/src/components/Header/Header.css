@@ -151,6 +151,23 @@ input[type="checkbox"]{
     color: var(--primary-color);
     
 }
+.notification{
+    position: absolute;
+    top: -5px;
+    left: 32px;
+    background: var(--primary-color);
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+}
+.fa-shopping-cart{
+    position: relative;
+}
 
 /*@media (max-width: 991px){
     .menu-icons label{

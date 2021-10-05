@@ -6,3 +6,30 @@
 .home > div {
     padding: 60px 0;
 }
+.home > .home-header{
+    height: 100vh;
+    background: url('../../assets/images/header.jpg') no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.overlay{
+    position: absolute;
+    top: 30%;
+    left: 2%;
+    color: white;
+}
+.overlay > *{
+    background: rgba(0, 0, 0, 0.8);
+
+}
+.overlay > p{
+    width: 70%;
+    padding: 0 10px;
+}
+.overlay > p:last-child{
+    padding-bottom: 5px;
+}
+.overlay h1{
+    font-size: 3rem;
+    padding: 10px;
+}
