@@ -17,7 +17,11 @@ const FoodItem = ({ item }) => {
             userId: user._id,
             item,
         }
-        dispatch(addItemToCart(itemCart))
+        if (user._id) {
+            dispatch(addItemToCart(itemCart))
+      }   
+
+   
     }
     return (
         <div className="food_box">

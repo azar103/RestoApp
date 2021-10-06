@@ -1,14 +1,19 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import './Header.css';
 import { logout } from '../../Store/actions/authActions';
+import { getCartItems } from '../../Store/actions/cartActions';
 const Header = () => {
     const isAuth = useSelector(state => state.auth.isAuth);
     const user = useSelector(state => state.auth.user);
     const history = useHistory();
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cart.cart);
+    useEffect(() => {
+        dispatch(getCartItems())
+        numberOfItems()
+    }, [])
     const numberOfItems = () => {
         return cartItems.filter(item => item.userId === user._id).length;
     }
@@ -34,10 +39,13 @@ const Header = () => {
                                     <Link to="/favorites">
                                     <i className="fas fa-heart icon"></i>
                                  </Link>
-                                    <Link to="shopping-cart">
+                                    <Link to="/shopping-cart">
                             
                                             <i className="fas fa-shopping-cart icon">
-                                            <div className="notification">{numberOfItems()}</div>
+                                                {numberOfItems() > 0 && 
+                                                    <div className="notification">{numberOfItems()}</div>
+                                                }
+                                           
                                             </i>
                                         </Link>
                                         </>

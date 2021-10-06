@@ -1,0 +1,14 @@
+.cartItem{
+    display: flex;
+}
+
+.cart_item_image{
+    flex: 3;
+}
+.cart_item_image img {
+    width: 100%;
+    height: 100%;
+}
+.cart_content {
+    flex: 9;
+}

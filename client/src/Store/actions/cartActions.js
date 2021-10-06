@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { GET_CART_ITEMS } from './actionTypes';
+import { returnErrors } from './errorActions';
 
 export const getCartItems = () => async dispatch => {
     try {
@@ -9,7 +10,7 @@ export const getCartItems = () => async dispatch => {
             payload: res.data
         })
     } catch (error) {
-        
+        dispatch(returnErrors(error.response.data, error.response.status, 'ADD_FOOD_ERROR'));
     }
 }
 export const addItemToCart = (item) => async dispatch => {

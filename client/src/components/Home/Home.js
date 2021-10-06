@@ -28,6 +28,7 @@ const Home = () => {
                     </div>
                 </div>
                 <Dishes />
+             
             </div>
         )
     }

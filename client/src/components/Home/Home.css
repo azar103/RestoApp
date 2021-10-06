@@ -1,15 +1,16 @@
 .home {
     display: flex;
     flex-direction: column;
-    height: 100vh;
 }
 .home > div {
     padding: 60px 0;
 }
 .home > .home-header{
     height: 100vh;
+
     background: url('../../assets/images/header.jpg') no-repeat;
     background-size: cover;
+    background-attachment: scroll;
     position: relative;
 }
 .overlay{

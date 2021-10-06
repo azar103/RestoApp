@@ -4,8 +4,8 @@
     border-radius: .5rem;
     width: 33%;
     height: 130px;
-
     display: flex;
+    margin-bottom: 5px;
 
 }
 .food_box:nth-child(2){
