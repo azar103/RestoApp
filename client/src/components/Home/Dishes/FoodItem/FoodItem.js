@@ -12,6 +12,7 @@ const FoodItem = ({ item }) => {
     const user = useSelector(state => state.auth.user);
     const history = useHistory();
     const dispatch = useDispatch();
+    const newItem = {}
     const addToCart = () => {
         const itemCart = {
             userId: user._id,

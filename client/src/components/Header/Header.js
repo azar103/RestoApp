@@ -13,9 +13,15 @@ const Header = () => {
     useEffect(() => {
         dispatch(getCartItems())
         numberOfItems()
-    }, [])
+    }, [getCartItems])
     const numberOfItems = () => {
-        return cartItems.filter(item => item.userId === user._id).length;
+        
+        if (user) {
+            return cartItems.filter(item => item.userId === user._id).length
+        } else {
+            return 0;
+        }
+            
     }
     return (
         <div className="header">

@@ -10,9 +10,7 @@
 .box {
     display: flex;
 }
- .total_box,.items_cart {
-    border:1px solid #ddd;
-}
+
 
 .items_cart_container{
     width: 70%;
@@ -20,8 +18,15 @@
 .items_cart{
     flex: 8;
     margin-right: 3px;
+    display: flex;
+    flex-direction: column;
 }
 .total_box{
     width: 30%;
     flex: 4;
+    border: 1px solid #eee ;
+}
+
+.items_cart_container h2{
+    margin-bottom: 5px;
 }

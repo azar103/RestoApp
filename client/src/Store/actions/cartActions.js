@@ -21,3 +21,21 @@ export const addItemToCart = (item) => async dispatch => {
         
     }
 }
+
+export const removeItemFromCart = (id) => async dispatch => {
+    try {
+        await axios.delete(`http://localhost:5000/api/cart/${id}`);
+        dispatch(getCartItems());
+    } catch (error) {
+        
+    }
+}
+
+export const editPriceAndQuantity = (id, obj) => async dispatch => {
+    try {
+        await axios.put(`http://localhost:5000/api/cart/edit/${id}`, obj);
+        dispatch(getCartItems());
+    } catch (error) {
+        
+    }
+}
