@@ -7,29 +7,35 @@ const CartItem = ({ item:{item, quantity,_id} }) => {
     const dispatch = useDispatch();
     const [itemQuantity, setItemQuantity] = useState(quantity);
     const [itemPrice, setItemPrice] = useState(item.price);
-    useEffect(() => {
-        setItemPrice(item.price * itemQuantity)
-      
-    }, [itemQuantity])  
+    
     const addQuantity = () => {
-        setItemQuantity(prevCount => prevCount + 1);
-        const obj = {
-            item: {
-            price: itemPrice
-            },
-            quantity: itemQuantity
+        if (_id) {
+            
+            setItemQuantity(prevCount => prevCount + 1);
+      
+            const obj = {
+                item: {
+                price: itemPrice*(itemQuantity+1)
+                },
+                quantity: itemQuantity+1
+            }
+            dispatch(editPriceAndQuantity(_id, obj));
         }
-        dispatch(editPriceAndQuantity(_id, obj));
+    
     }
     const reduceQuantity = () => {
-        setItemQuantity(prevCount => prevCount - 1);
-        const obj = {
-            item: {
-            price: itemPrice
-            },
-            quantity: itemQuantity
+        if (_id) {
+            setItemQuantity(prevCount => prevCount - 1);
+    
+           const obj = {
+              item: {
+              price: itemPrice*(itemQuantity-1)
+             },
+               quantity: itemQuantity - 1
+          }
+          dispatch(editPriceAndQuantity(_id, obj));
         }
-        dispatch(editPriceAndQuantity(_id, obj));
+        
     }
     return (
         <div className="cart_item"
@@ -40,13 +46,14 @@ const CartItem = ({ item:{item, quantity,_id} }) => {
             <div className="content">
                 <h3>{item.name}</h3>
                 <p>{item.description}</p>
-                <span>${itemPrice}</span>
+                <span>${item.price}</span>
                 <div className="btn_container">
                     <button className="btn_add_minus"
                     onClick={addQuantity}
                     >+</button>
                     <span>{itemQuantity}</span>
                     <button className="btn_add_minus"
+                    disabled={ itemQuantity === 1 ?true : false}    
                     onClick={reduceQuantity}
                     >-</button>
                 </div>

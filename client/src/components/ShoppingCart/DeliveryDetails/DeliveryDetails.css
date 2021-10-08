@@ -1,0 +1,40 @@
+.box .address_container {
+    flex: 8;
+}
+.fa-arrow-left{
+    cursor: pointer; 
+}
+
+.box_header{
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    align-items: center;
+}
+.address_form{
+    display: flex;
+    margin-top: 20px;
+    flex-wrap: wrap;
+
+}
+.address_form_input {
+    width: 25%;
+    border:none;
+    outline: none;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    margin: 10px 0;
+    
+}
+.box {
+    padding: 20px;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    font-size: .8rem;
+}
+.row span {
+    text-transform: capitalize;
+}

@@ -1,7 +1,8 @@
-import { GET_CART_ITEMS, IS_LOADING } from '../actions/actionTypes';
+import { GET_CART_ITEMS, GET_TOTAL_PRICE, IS_LOADING } from '../actions/actionTypes';
 const initState = {
     cart: [],
-    isLoading: false
+    isLoading: false,
+    totalPrice: 0
 }
 
  const cartReducer = (state = initState, { type, payload }) => {
@@ -16,6 +17,11 @@ const initState = {
             return {
                 ...state,
                 isLoading: true
+            }
+        case GET_TOTAL_PRICE:
+            return {
+                ...state,
+                totalPrice: state.cart.filter((item) => item.userId === payload).reduce((acc, val) => acc + parseFloat(val.item.price, 3), 0)
             }
         default:
             return state;

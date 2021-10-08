@@ -20,3 +20,5 @@ export const GET_ONE_FOOD = "GET_ONE_FOOD";
 export const CREATE_FOOD_ERROR = "CREATE_FOOD_ERROR";
 export const GET_CART_ITEMS = "GET_CART_ITEMS";
 export const ADD_CART_ERROR = "ADD_CART_ERROR";
+export const GET_TOTAL_PRICE = "GET_TOTAL_PRICE";
+export const GET_ORDERS = "GET_ORDERS";

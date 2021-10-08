@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_CART_ITEMS } from './actionTypes';
+import { GET_CART_ITEMS, GET_TOTAL_PRICE } from './actionTypes';
 import { returnErrors } from './errorActions';
 
 export const getCartItems = () => async dispatch => {
@@ -35,6 +35,18 @@ export const editPriceAndQuantity = (id, obj) => async dispatch => {
     try {
         await axios.put(`http://localhost:5000/api/cart/edit/${id}`, obj);
         dispatch(getCartItems());
+    } catch (error) {
+        
+    }
+}
+
+export const getTotalPrice = (userId) => async dispatch => {
+    try {
+        dispatch({
+            type: GET_TOTAL_PRICE,
+            payload: userId
+        })
+
     } catch (error) {
         
     }

@@ -2,8 +2,6 @@ const express = require('express');
 const multer = require('multer');
 const router = express.Router();
 const foodCtrl = require('../controllers/foods');
-const path = require('path');
-
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads')
