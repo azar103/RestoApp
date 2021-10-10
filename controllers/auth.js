@@ -1,24 +1,32 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const Account = require('../models/Account');
 exports.register = async (req, res, next) => {
     try {
-        const { firstName, lastName, email, password, passwordConfirmed } = req.body;
-        if (!email || !firstName || !lastName || !email || !password || !passwordConfirmed) {
+        const { firstName, lastName, email, password, passwordConfirmed, role } = req.body;
+        /*if (!firstName || !lastName || !email || !password || !passwordConfirmed) {
             return res.status(500).send({ msg: 'please fill in all the fields' });
         }
-        if (password !== passwordConfirmed) {
+       /* if (password !== passwordConfirmed) {
             return res.status(500).send({msg: 'passwords are not matched'})
         }
         let user = await User.findOne({ email });
         if (user) {
             return res.status(500).send({ msg: 'User already exist' })
-        }
-
-        user = new User({ firstName, lastName, email, password });
+        }*/
+        const account = new Account({
+            email,
+            password,
+            passwordConfirmed,
+            role
+        })
         const saltRound = 10;
-        const hashPassword = await bcrypt.hash(password, saltRound);
-        user.password = hashPassword;
+        const hashPassword = await bcrypt.hash(account.password, saltRound);
+        account.password = hashPassword;
+        const accountSaved = await account.save();
+         
+        const user = new User({ firstName, lastName, account:  accountSaved });
         const payload = {
             _id: user.id
         }
@@ -30,6 +38,7 @@ exports.register = async (req, res, next) => {
         res.status(200).send({ user, token: "bearer " + token,  msg: 'registration successfully' });
     } catch (error) {
         res.status(500).send({ error });
+        console.dir(error);
     }
 }
 

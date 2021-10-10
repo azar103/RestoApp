@@ -6,19 +6,19 @@ const CartItem = ({ item:{item, quantity,_id} }) => {
     const API_ENDPOINT = process.env.API_ENDPOINT || 'http://localhost:5000';
     const dispatch = useDispatch();
     const [itemQuantity, setItemQuantity] = useState(quantity);
-    const [itemPrice, setItemPrice] = useState(item.price);
-    
+    const [itemPrice, setItemPrice] = useState(item.price/itemQuantity);
+
     const addQuantity = () => {
         if (_id) {
-            
             setItemQuantity(prevCount => prevCount + 1);
-      
-            const obj = {
-                item: {
-                price: itemPrice*(itemQuantity+1)
-                },
-                quantity: itemQuantity+1
-            }
+                const obj = {
+                    item: {
+                    price: itemPrice*(itemQuantity+1)
+                    },
+                    quantity: itemQuantity+1
+                }
+            
+            
             dispatch(editPriceAndQuantity(_id, obj));
         }
     
@@ -51,7 +51,7 @@ const CartItem = ({ item:{item, quantity,_id} }) => {
                     <button className="btn_add_minus"
                     onClick={addQuantity}
                     >+</button>
-                    <span>{itemQuantity}</span>
+                    <span>{quantity}</span>
                     <button className="btn_add_minus"
                     disabled={ itemQuantity === 1 ?true : false}    
                     onClick={reduceQuantity}

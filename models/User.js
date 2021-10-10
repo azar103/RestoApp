@@ -6,10 +6,7 @@ const { Schema } = mongoose;
 const UserSchema = new Schema({
     firstName:{type: String, required:true},
     lastName: {type: String, required: true},
-    password: { type: String, required: true },
-    passwordConfirmed:{type: String},
-    email: { type: String, required: true },
-    isAdmin: { type: Boolean, required: true, default: false },
+    account: { type: Schema.Types.ObjectId, required:true, ref:"Account" }
 },
 {timestamps: true}
 )
