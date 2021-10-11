@@ -3,9 +3,12 @@ import { useSelector } from 'react-redux';
 import Dishes from './Dishes/Dishes';
 import Loading from '../Loading/Loading';
 
+
 import './Home.css';
-import Users from '../Admin/Users/Users';
-import header from '../../assets/images/header.jpg';
+
+
+import AdminDashboard from '../Admin/AdminDashboard';
+import Foods from '../Admin/Foods/Foods';
 
 const Home = () => {
     const loading = useSelector(state => state.auth.isLoading);
@@ -13,9 +16,8 @@ const Home = () => {
     if (loading) {
         return <Loading />
     }
-    if (user && user.isAdmin) {
-        return <Users />
-    } else {
+
+    if (!user || user.account.role === "ROLE_USER") {
         return (
             <div className="home">
                 <div className="home-header"
@@ -31,6 +33,8 @@ const Home = () => {
              
             </div>
         )
+    } else {
+        return <Foods />
     }
    
 }

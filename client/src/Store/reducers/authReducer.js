@@ -4,7 +4,6 @@ const initState = {
     isLoading: false,
     user: null,
     token: localStorage.getItem('token'),
-    users: []
 }
 
 const authReducer = (state = initState, { type, payload }) => {
@@ -37,12 +36,7 @@ const authReducer = (state = initState, { type, payload }) => {
                 isLoading: false,
                 ...payload
             }
-        case GET_USERS:
-            return {
-                ...state,
-                isLoading:false,
-                users: [...payload]
-        }    
+ 
         case LOGOUT:
         case LOGIN_ERROR:
         case REGISTER_ERROR:

@@ -1,16 +1,20 @@
 import React, {useState} from 'react'
 import './DeliveryDetails.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { saveOrder } from '../../../Store/actions/orderActions';
 const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
 
     const dispatch = useDispatch();
+    const cartItems = useSelector(state => state.cart.cart);
+    const user = useSelector(state => state.auth.user);
 
     const [formData, setFormData] = useState({
-        loaclity: '',
+        locality: '',
         street: '',
         zipCode: '',
         phoneNumber:''
     });
+
      
     const getTotalPriceWithDelivery = () => {
         return total + delivery;
@@ -20,15 +24,40 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
         return price / quantity;
     }
 
-    const getAdressObj = (locality, street, zipCode, phoneNumber) => {
+    const getAdressObj = () => {
         return {
-            locality,
-            street,
-            zipCode,
-            phoneNumber
+            locality: formData.locality,
+            street: formData.street,
+            zipCode: formData.zipCode,
+            phoneNumber: formData.phoneNumber
         }
     }
     
+    const onPlaceOrder = () => {
+        const items = cartItems.map((cartItem, index) => ({
+            item: cartItem.item,
+            quantity: cartItem.quantity
+        }));
+        const address = getAdressObj();
+        const order = {
+            items,
+            status: "Placed",
+            user: {
+                email: user.account.email,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                userId: user._id,
+                address
+            }
+        }
+        dispatch(saveOrder(order));
+    }
+    const onChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
     return (
         <>
         <div className="box_header">
@@ -41,10 +70,33 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
             <div className="address_container">
                 <h4>Address:</h4>
                 <form className="address_form">
-                    <input type="text" className="address_form_input" placeholder="Locality*" />
-                    <input type="text" className="address_form_input" placeholder="Street*" />
-                    <input type="text" className="address_form_input" placeholder="Zip Code*" />
-                    <input type="text" className="address_form_input" placeholder="Phone Number*" />    
+                        <input type="text"
+                            className="address_form_input"
+                            placeholder="Locality*"
+                            name="locality"
+                            value={formData.locality}
+                            onChange={onChange}
+                    
+                        />
+                        <input type="text" className="address_form_input" placeholder="Street*"
+                            name="street"
+                            value={formData.street}
+                            onChange={onChange}
+                        />
+                        <input type="text"
+                            className="address_form_input"
+                            placeholder="Zip Code*"
+                            name="zipCode"
+                            value={formData.zipCode}
+                            onChange={onChange}
+                        />
+                        <input type="text"
+                            className="address_form_input"
+                            placeholder="Phone Number*"
+                            name="phoneNumber"
+                            value={formData.phoneNumber}
+                            onChange={onChange}
+                        />
                 </form>
             </div>
             <div className="total_box">
@@ -64,6 +116,7 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
                 </div>
                     <button
                         className="cart_btn opacity"
+                        onClick={onPlaceOrder}
                 >
                      place order
                 </button>

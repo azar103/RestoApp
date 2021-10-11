@@ -11,7 +11,8 @@ const Register = () => {
         lastName: '',
         email: '',
         password: '',
-        passwordConfirmed: ''
+        passwordConfirmed: '',
+        role:""
     });
     const history = useHistory();
     const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const Register = () => {
     const handleChangeForm = (e) => {
         setFormData({
             ...formData,
+            role:"ROLE_USER",
             [e.target.name]: e.target.value
         });
     }

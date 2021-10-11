@@ -11,7 +11,6 @@ const Checkout = ({ onCheckout, items, nbItems, total, delivery }) => {
     }
 
     
-
     return (
         <>
         <h2>Cart ({nbItems} Items)</h2>

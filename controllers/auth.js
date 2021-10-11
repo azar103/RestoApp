@@ -5,25 +5,29 @@ const Account = require('../models/Account');
 exports.register = async (req, res, next) => {
     try {
         const { firstName, lastName, email, password, passwordConfirmed, role } = req.body;
-        /*if (!firstName || !lastName || !email || !password || !passwordConfirmed) {
+        if (!firstName || !lastName || !email || !password) {
             return res.status(500).send({ msg: 'please fill in all the fields' });
         }
-       /* if (password !== passwordConfirmed) {
+        if (password !== passwordConfirmed) {
             return res.status(500).send({msg: 'passwords are not matched'})
         }
-        let user = await User.findOne({ email });
-        if (user) {
+        let account = await Account.findOne({ email });
+
+  
+        if (account) {
             return res.status(500).send({ msg: 'User already exist' })
-        }*/
-        const account = new Account({
+        }
+         account = new Account({
             email,
             password,
             passwordConfirmed,
             role
         })
         const saltRound = 10;
-        const hashPassword = await bcrypt.hash(account.password, saltRound);
+        const hashPassword = await bcrypt.hash(password, saltRound);
         account.password = hashPassword;
+        account.passwordConfirmed = hashPassword;
+
         const accountSaved = await account.save();
          
         const user = new User({ firstName, lastName, account:  accountSaved });
@@ -44,19 +48,22 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
     try {
-        const { email, password } = req.body;
+        const {email, password } = req.body;
         if (!email || !password) {
             return res.status(500).send({ msg: 'please fill in  all the fields' });
         }
-        let user = await User.findOne({ email });
-        if (!user) {
+        let account = await Account.findOne({ email });
+
+        if (!account) {
             return res.status(500).send({ msg: 'User does not exist' });
         }
-
-        const match = await bcrypt.compare(password, user.password);
+            
+        
+        const match = await bcrypt.compare(password, account.password); 
         if (!match) {
             return res.status(500).send({ msg: 'invalid email/password' });
         }
+        const user= await User.findOne({account:account._id.toString()})
         const payload = {
             _id: user.id
         }
@@ -64,21 +71,36 @@ exports.login = async (req, res, next) => {
         const token = jwt.sign(payload, process.env.SECRET_TOKEN, {
             expiresIn: '30d'
         })
+        user.account = account;
+       
         res.send({ user, token: "bearer " + token,  msg: 'login successfully' });
     } catch (error) {
-      
+        console.dir(error);
     }
 }
 
 exports.authMe = async (req, res, next) => {
-    let userFound = await User.findById(req.user).select('-password');
-   res.status(200).send({user: userFound})
+    let user = await User.findById(req.user);
+    const account = await Account.findById(user.account.toString()).select('-password').select('-passwordConfirmed');
+    user.account = account;
+   res.status(200).send({user})
 }
 
 exports.getUsers = async (req, res, next) => {
     try {
         const users = await User.find();
-        res.status(200).send(users);
+        const copy = [];
+    
+        users.forEach(async (user,index) => {
+            const account = await Account.findById(user.account.toString());
+            user.account = account;
+            copy.push(user)
+            console.log(copy);
+        })
+        res.status(200).send(copy);
+         
+    
+        //res.status(200).send(copy);
     } catch (error) {
         res.status(500).send({ error });
     }

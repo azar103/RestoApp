@@ -23,6 +23,7 @@ const Header = () => {
         }
             
     }
+
     return (
         <div className="header">
             <div className="container">
@@ -36,7 +37,7 @@ const Header = () => {
                     <div className="menu-icons">
                         {
                             isAuth ?
-                                !user.isAdmin ?
+                                user.account.role === "ROLE_USER" ?
                                     <>
                                 <span style={{
                                     marginRight: '10px',
@@ -58,7 +59,6 @@ const Header = () => {
                                     :
                                     <span id="menu">Admin <i class="fa fa-chevron-down" aria-hidden="true"></i>
                                         <ul className="dropdown">
-                                            <li><Link to="/admin/users">Users</Link></li>
                                             <li><Link to="/admin/foods">Foods</Link></li>
                                             <li><a href="#">Orders</a></li>
                                         </ul>

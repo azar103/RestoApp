@@ -60,7 +60,6 @@ export const getCurrentUser = () => async dispatch => {
             })
         }, 3000);    
     } catch (error) {
-        console.log(error);
         setTimeout(() => {
             dispatch(returnErrors(error.response.data, error.response.status))
         }, 3000);
@@ -87,17 +86,3 @@ const setLoading = () => {
 
 
 
-export const getUsers = () => async dispatch => {  
- 
-    try {
-        const res = await axios.get('http://localhost:5000/api/auth/');
-        setTimeout(() => {
-            dispatch({
-                type: GET_USERS,
-                payload: res.data
-            })
-        }, 3000);
-    } catch (error) {
-      
-    }
-}
