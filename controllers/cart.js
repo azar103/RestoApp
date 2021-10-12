@@ -55,3 +55,14 @@ exports.editQuantityAndPrice = async (req, res, next) => {
         res.status(400).send({error})
     }
 }
+
+exports.deleteItemsByUserId = async (req, res, next) => {
+    try {
+        const { userId } = req.params;
+        console.log('delete');
+        await Cart.findOne({ userId }).remove();
+        res.status(200).send({ msg: 'item deleted' });
+    } catch (error) {
+        res.status(400).send({ error });
+    }
+}

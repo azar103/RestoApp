@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { GET_ORDERS } from './actionTypes';
+import { deleteItems } from './cartActions';
 
 export const getOrders = () => async dispatch => {
    try {
@@ -18,6 +19,6 @@ export const saveOrder = (form) => async dispatch => {
         await axios.post('http://localhost:5000/api/orders/', form);
         dispatch(getOrders());
     } catch (error) {
-        
+        console.log(error);
     }
 }

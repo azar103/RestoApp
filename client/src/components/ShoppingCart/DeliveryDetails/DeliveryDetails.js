@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import './DeliveryDetails.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { saveOrder } from '../../../Store/actions/orderActions';
+import { deleteItems } from '../../../Store/actions/cartActions';
+import swal from 'sweetalert';
 const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
 
     const dispatch = useDispatch();
@@ -51,6 +53,12 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
             }
         }
         dispatch(saveOrder(order));
+        dispatch(deleteItems(user._id));
+        swal({
+            title: 'Order Confirmed!',
+            icon: 'success',
+            timer: '2000',
+        })
     }
     const onChange = (e) => {
         setFormData({

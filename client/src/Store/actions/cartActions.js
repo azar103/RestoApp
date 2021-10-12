@@ -48,6 +48,14 @@ export const getTotalPrice = (userId) => async dispatch => {
         })
 
     } catch (error) {
+    }
+}
+
+export const deleteItems = (userId) => async dispatch => {
+    try {
+        await axios.delete(`http://localhost:5000/api/cart/deleteItems/${userId}`);
+        dispatch(getCartItems());
+    } catch (error) {
         
     }
 }
