@@ -9,7 +9,6 @@ const CartItem = ({ item:{item, quantity,_id} }) => {
     const [itemPrice, setItemPrice] = useState(item.price/itemQuantity);
 
     const addQuantity = () => {
-        if (_id) {
             setItemQuantity(prevCount => prevCount + 1);
                 const obj = {
                     item: {
@@ -19,12 +18,10 @@ const CartItem = ({ item:{item, quantity,_id} }) => {
                 }
             
             
-            dispatch(editPriceAndQuantity(_id, obj));
-        }
-    
+            dispatch(editPriceAndQuantity(_id, obj));    
     }
     const reduceQuantity = () => {
-        if (_id) {
+
             setItemQuantity(prevCount => prevCount - 1);
     
            const obj = {
@@ -34,7 +31,7 @@ const CartItem = ({ item:{item, quantity,_id} }) => {
                quantity: itemQuantity - 1
           }
           dispatch(editPriceAndQuantity(_id, obj));
-        }
+    
         
     }
     return (
@@ -49,11 +46,12 @@ const CartItem = ({ item:{item, quantity,_id} }) => {
                 <span>${item.price}</span>
                 <div className="btn_container">
                     <button className="btn_add_minus"
-                    onClick={addQuantity}
+                        onClick={addQuantity}
+                        disabled={_id ? false: true}
                     >+</button>
                     <span>{quantity}</span>
                     <button className="btn_add_minus"
-                    disabled={ itemQuantity === 1 ?true : false}    
+                    disabled={ _id ?false : true}    
                     onClick={reduceQuantity}
                     >-</button>
                 </div>

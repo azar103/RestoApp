@@ -1,9 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './DeliveryDetails.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { saveOrder } from '../../../Store/actions/orderActions';
 import { deleteItems } from '../../../Store/actions/cartActions';
 import swal from 'sweetalert';
+import { clearErrors } from '../../../Store/actions/errorActions';
+import { useHistory} from 'react-router-dom';
 const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
 
     const dispatch = useDispatch();
@@ -16,8 +18,21 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
         zipCode: '',
         phoneNumber:''
     });
-
-     
+    const length = cartItems.filter((cart) => cart.userId === user._id).length;
+    const [disabled, setDisabled] = useState(false);
+    const error = useSelector(state => state.error);
+    const [msg, setMsg] = useState(null);
+    const history = useHistory();
+    console.log(msg);
+    useEffect(() => {
+        if (error.id === 'POST_ORDER_FAILED') {
+            setMsg(error.msg.msg)
+        } else {
+            setMsg(null);
+        }
+        console.log(msg);
+    }, [error.msg]);
+ 
     const getTotalPriceWithDelivery = () => {
         return total + delivery;
     }
@@ -34,13 +49,14 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
             phoneNumber: formData.phoneNumber
         }
     }
+
     
     const onPlaceOrder = () => {
-        const items = cartItems.map((cartItem, index) => ({
+        const items = cartItems.filter((cart) => cart.userId === user._id).map((cartItem, index) => ({
             item: cartItem.item,
             quantity: cartItem.quantity
         }));
-        const address = getAdressObj();
+            const address = getAdressObj();
         const order = {
             items,
             status: "Placed",
@@ -52,19 +68,25 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
                 address
             }
         }
-        dispatch(saveOrder(order));
-        dispatch(deleteItems(user._id));
-        swal({
-            title: 'Order Confirmed!',
-            icon: 'success',
-            timer: '2000',
+
+            dispatch(saveOrder(order));
+            dispatch(deleteItems(user._id));
+           
+        setFormData({
+            ...formData,
+            locality: '',
+            street: '',
+            zipCode: '',
+            phoneNumber:''
         })
+        history.push('/orderDetails');
     }
     const onChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         })
+        dispatch(clearErrors())
     }
     return (
         <>
@@ -83,8 +105,7 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
                             placeholder="Locality*"
                             name="locality"
                             value={formData.locality}
-                            onChange={onChange}
-                    
+                            onChange={onChange}    
                         />
                         <input type="text" className="address_form_input" placeholder="Street*"
                             name="street"
@@ -119,12 +140,13 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
                 <div className="grand_total">
                     <h3>Grand Total</h3>    
                     <span>
-                      ${getTotalPriceWithDelivery()}
+                     { length===0 ? `$20` :  `$${getTotalPriceWithDelivery()}`}
                     </span>
                 </div>
                     <button
                         className="cart_btn opacity"
                         onClick={onPlaceOrder}
+                        disabled={length!==0&&msg===null? false : true}
                 >
                      place order
                 </button>

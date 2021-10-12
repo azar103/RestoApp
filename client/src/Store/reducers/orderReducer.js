@@ -1,11 +1,11 @@
-import { GET_ORDERS } from "../actions/actionTypes"
+import { GET_ORDERS, POST_ORDER_FAILED } from "../actions/actionTypes"
 
 const initState = {
     orders: []
 }
 
 
-const orderReducer = (state = initState, { action, type }) => {
+const orderReducer = (state = initState, { payload, type }) => {
     switch (type) {
         case GET_ORDERS:
             return {

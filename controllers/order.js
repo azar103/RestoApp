@@ -10,6 +10,10 @@ exports.getOrders = async (req, res, next) => {
 }
 exports.postOrder = async (req, res, next) => {
     try {
+        const { locality, street, zipCode, phoneNumber } = req.body.user.address;
+        if (!locality || !street || !zipCode || !phoneNumber) {
+            return res.status(500).send({ msg: 'address fields required' });
+        }
         const order = new Order({
             ...req.body
         })

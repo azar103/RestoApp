@@ -22,3 +22,4 @@ export const GET_CART_ITEMS = "GET_CART_ITEMS";
 export const ADD_CART_ERROR = "ADD_CART_ERROR";
 export const GET_TOTAL_PRICE = "GET_TOTAL_PRICE";
 export const GET_ORDERS = "GET_ORDERS";
+export const POST_ORDER_FAILED = "POST_ORDER_FAILED";

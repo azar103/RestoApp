@@ -5,6 +5,7 @@ import errorReducer from "./errorReducer";
 import foodsReducer from "./foodsReducer";
 import storage from "redux-persist/lib/storage";
 import {persistCombineReducers} from 'redux-persist';
+import orderReducer from "./orderReducer";
 
 const rootPersistConfig = {
     key: 'root',
@@ -14,5 +15,6 @@ export default persistCombineReducers(rootPersistConfig, {
     auth: authReducer,
     foods: foodsReducer,
     error: errorReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    order: orderReducer
 })

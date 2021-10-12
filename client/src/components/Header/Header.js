@@ -43,9 +43,9 @@ const Header = () => {
                                     marginRight: '10px',
                       
                                     }}>Hello, {`${user.firstName} ${user.lastName}`}</span>
-                                    <Link to="/favorites">
-                                    <i className="fas fa-heart icon"></i>
-                                 </Link>
+                                        <Link to="/orderDetails">
+                                        <i class="fa fa-shopping-bag icon"></i>
+                                        </Link>
                                     <Link to="/shopping-cart">
                             
                                             <i className="fas fa-shopping-cart icon">
@@ -83,7 +83,6 @@ const Header = () => {
                                 :
                                 <Link className="btn-login opacity"
                                     to="/login"
-                         
                                 >
                                 <i className="fas fa-sign-in-alt icon"></i>
                                     Login

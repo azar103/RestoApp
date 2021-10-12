@@ -15,6 +15,7 @@ import Foods from './components/Admin/Foods/Foods';
 import AddFood from './components/Admin/AddFood/AddFood';
 import EditFood from './components/Admin/EditFood/EditFood';
 import AdminDashboard from './components/Admin/AdminDashboard';
+import OrderDetails from './components/OrderDetails/OrderDetails';
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -28,9 +29,9 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/contact" component={Contact} />
+        <ProtectedRoute path="/orderDetails" component={OrderDetails}/>
         <ProtectedRoute path="/favorites" component={Favorites} />
         <ProtectedRoute path="/shopping-cart" component={ShoppingCart} />
-
         <ProtectedRoute path="/admin/foods" component={Foods} />
         <ProtectedRoute path="/admin/createFood" component={AddFood} />
         <ProtectedRoute path="/admin/editFood/:_id" component={EditFood} />

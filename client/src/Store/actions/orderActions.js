@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { GET_ORDERS } from './actionTypes';
+import { GET_ORDERS, POST_ORDER_FAILED } from './actionTypes';
 import { deleteItems } from './cartActions';
+import { returnErrors } from './errorActions';
 
 export const getOrders = () => async dispatch => {
    try {
@@ -19,6 +20,9 @@ export const saveOrder = (form) => async dispatch => {
         await axios.post('http://localhost:5000/api/orders/', form);
         dispatch(getOrders());
     } catch (error) {
-        console.log(error);
+        dispatch(returnErrors(error.response.data, error.response.status, 'POST_ORDER_FAILED'));
+        dispatch({
+            type: POST_ORDER_FAILED
+        })
     }
 }

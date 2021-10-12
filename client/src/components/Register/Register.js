@@ -22,7 +22,6 @@ const Register = () => {
     const [msg, setMsg] = useState(null);
     
     useEffect(() => {
-        console.log(isLoading);
         if (error.id === 'REGISTER_ERROR') {
             setMsg(error.msg.msg)
         } else {
