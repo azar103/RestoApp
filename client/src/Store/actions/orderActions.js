@@ -26,3 +26,12 @@ export const saveOrder = (form) => async dispatch => {
         })
     }
 }
+
+export const editOrder = (id, status) =>async dispatch => {
+    try {
+        await axios.put(`http://localhost:5000/api/orders/${id}`, status);
+        dispatch(getOrders());
+    } catch (error) {
+        
+    }
+}

@@ -60,7 +60,7 @@ const Header = () => {
                                     <span id="menu">Admin <i class="fa fa-chevron-down" aria-hidden="true"></i>
                                         <ul className="dropdown">
                                             <li><Link to="/admin/foods">Foods</Link></li>
-                                            <li><a href="#">Orders</a></li>
+                                            <li><Link to="/admin/orders">Orders</Link></li>
                                         </ul>
                                     </span>
                                 

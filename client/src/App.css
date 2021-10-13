@@ -73,3 +73,26 @@ button{
   background-position-x: 5px;
   min-width: 400px;
 }
+
+.status {
+  display: flex;
+  margin-top: 5px;
+  align-items: center;
+}
+.status_color{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.status_color_green{
+  background: green;
+}
+
+.status_color_red{
+  background: red;
+}
+
+.status_color_black{
+  background: #ddd;
+}

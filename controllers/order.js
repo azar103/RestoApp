@@ -24,3 +24,16 @@ exports.postOrder = async (req, res, next) => {
         res.status(500).send({ error });
     }
 }
+
+exports.editStatus = async (req, res, next) => {
+    try {
+        const { _id } = req.params;
+        await Order.updateOne({_id}, {$set: {
+            "status": req.body.status
+        }
+        })
+        res.status(200).send({msg:"status updated"})
+    } catch (error) {
+        res.status(500).send({ error });
+    }
+}

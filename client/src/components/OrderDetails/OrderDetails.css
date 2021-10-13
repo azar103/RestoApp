@@ -1,14 +1,12 @@
 .orderBox {
-    position: absolute;
-    top: 20%;
-    left: 5%;
 
     width: 30%;
-    height: 200px;
+    height: auto;
     padding: 10px;
     box-shadow: var(--box-shadow);
-    display: flex;
-    justify-content: space-between;
+    margin-left: 20px;
+
+  
 }
 
 .orderBox > .btn {
@@ -17,10 +15,15 @@
     border-radius: 3px;
     text-transform: capitalize;
     font-weight: bold;
+    margin-top: 20px;
+    background: red;
 }
 .orderBox .description {
     display: flex;
     flex-direction: column;
+}
+.description_details > p {
+    text-transform: capitalize;
 }
 
 
@@ -46,4 +49,8 @@
     width: 80px;
 
     text-align: center;
+}
+.line + p {
+    margin-top: 8px;
+    text-transform: capitalize;
 }

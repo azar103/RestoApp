@@ -15,9 +15,7 @@ const CartItem = ({ item:{item, quantity,_id} }) => {
                     price: itemPrice*(itemQuantity+1)
                     },
                     quantity: itemQuantity+1
-                }
-            
-            
+                }     
             dispatch(editPriceAndQuantity(_id, obj));    
     }
     const reduceQuantity = () => {

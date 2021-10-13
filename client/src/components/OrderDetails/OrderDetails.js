@@ -2,40 +2,38 @@ import React,{useEffect} from 'react'
 import './OrderDetails.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrders } from '../../Store/actions/orderActions';
+import OrderBox from './OrderBox/OrderBox';
 
 
 
 const OrderDetails = () => {
     const dispatch = useDispatch();
-    const order = useSelector(state => state.order.orders);
-    const orderItems = order[0].items;
+    const orders = useSelector(state => state.order.orders);
+    const user = useSelector(state => state.auth.user);
+    const orderItems = orders && orders.filter((item) => item.user.userId === user._id);
 
-    const API_ENDPOINT = process.env.API_ENDPOINT || 'http://localhost:5000';
+
+
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+   
+   
     useEffect(() => {
         dispatch(getOrders());
     }, [])
-    console.log(orderItems);
+   
     return (
-        <div className="orderBox">
-            <div className="description">
-                <div className="img_state">
-                     <span>waiting</span>
-                </div>
-                <div className="description_details">
-                    <h3>Order Summary</h3>
-                    {orderItems.map((item) => <div
-                    style={{display:'flex', justifyContent:'space-between'}}
-                    >
-                        <span>{item.item.name}</span>
-                        <span>{item.quantity}x{item.item.price/item.quantity}</span>
-                    </div>)}
-                </div>
+        
+        <div style={{ width:'100%', position:"absolute", top:"20%" }}>
+            <div className="container">
+            <div style={{display:'flex'}}> 
+                    {orderItems.map((order) => <OrderBox
+                        order={order}
+                        days={days}
+                    />)}
+            </div>   
             </div>
-            <button className="btn opacity">
-                cancel the order
-            </button>
-
-        </div>
+       </div>     
     )
 }
 
