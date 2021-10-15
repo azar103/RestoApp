@@ -6,7 +6,7 @@ const OrderItem = ({ order: { _id, user, items, createdAt,status } }) => {
     const currentDate = new Date(createdAt);
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const dispatch = useDispatch();
-    const total = items.reduce((accum, val) => accum + val.item.price, 20);
+    const total = items.reduce((accum, val) => accum + parseInt(val.item.price), 20);
     return (
         <div className="order_dashboard_box">
             <p>orderId-#{_id}</p>

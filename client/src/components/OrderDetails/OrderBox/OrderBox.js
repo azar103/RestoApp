@@ -1,7 +1,10 @@
 import React from 'react'
+import { editOrder } from '../../../Store/actions/orderActions';
+import {useDispatch } from 'react-redux';
 
 const OrderBox = ({ order, days }) => {
-    const total = order.items.reduce((accum, val) => accum + val.item.price, 20);
+    const total = order.items.reduce((accum, val) => accum + parseInt(val.item.price), 20);
+    const dispatch = useDispatch();
     return (
         <div className="orderBox">
  
@@ -34,7 +37,13 @@ const OrderBox = ({ order, days }) => {
                 </div>
                 {
                 order.status === "Placed" &&
-                    <button className="btn opacity">
+                <button className="btn opacity"
+                onClick={() => {
+                    dispatch(editOrder(order._id, {
+                    "status":"Cancelled"
+                }))
+            }}
+                >
                        cancel the order
                     </button>                
                 }

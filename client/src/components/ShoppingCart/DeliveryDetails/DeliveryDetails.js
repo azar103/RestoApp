@@ -3,7 +3,7 @@ import './DeliveryDetails.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { saveOrder } from '../../../Store/actions/orderActions';
 import { deleteItems } from '../../../Store/actions/cartActions';
-import swal from 'sweetalert';
+import {io} from 'socket.io-client';
 import { clearErrors } from '../../../Store/actions/errorActions';
 import { useHistory} from 'react-router-dom';
 const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
@@ -23,14 +23,14 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
     const error = useSelector(state => state.error);
     const [msg, setMsg] = useState(null);
     const history = useHistory();
-    console.log(msg);
+    const socket = io('http://localhost:5000');
     useEffect(() => {
         if (error.id === 'POST_ORDER_FAILED') {
             setMsg(error.msg.msg)
         } else {
             setMsg(null);
         }
-        console.log(msg);
+
     }, [error.msg]);
  
     const getTotalPriceWithDelivery = () => {
@@ -71,7 +71,7 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
 
             dispatch(saveOrder(order));
             dispatch(deleteItems(user._id));
-           
+            socket.emit('add', order);  
         setFormData({
             ...formData,
             locality: '',
