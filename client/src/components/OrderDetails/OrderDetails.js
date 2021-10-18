@@ -27,8 +27,9 @@ const OrderDetails = () => {
    
     return (
         
-        <div style={{ width:'100%', position:"absolute", top:"20%" }}>
+        <main>
             <div className="container">
+            <h2>Order History</h2>    
             <div style={{display:'flex', flexWrap:'wrap'}}> 
                     {orderItems.map((order) => <OrderBox
                         order={order}
@@ -36,7 +37,7 @@ const OrderDetails = () => {
                     />)}
             </div>   
             </div>
-       </div>     
+       </main>     
     )
 }
 

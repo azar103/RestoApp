@@ -28,24 +28,28 @@ const ShoppingCart = () => {
     }
     
     return (
-        <div className="items_cart_container">
-            {step === 1 ?
-                <Checkout
-                    onCheckout={checkout}
-                    items={items}
-                    nbItems={nbItems}
-                    total={totalPrice}
-                    delivery={deliveryCharge}
-                />
-                :
-                <DeliveryDetails
-                    onBackToCheckout={backToCheckout}
-                    total={totalPrice}
-                    delivery={deliveryCharge}
-                    items={items}
-                />
-            }
-        </div>
+        <main>
+            <div className="container">    
+            <div className="items_cart_container">
+                {step === 1 ?
+                    <Checkout
+                        onCheckout={checkout}
+                        items={items}
+                        nbItems={nbItems}
+                        total={totalPrice}
+                        delivery={deliveryCharge}
+                    />
+                    :
+                    <DeliveryDetails
+                        onBackToCheckout={backToCheckout}
+                        total={totalPrice}
+                        delivery={deliveryCharge}
+                        items={items}
+                    />
+                }
+                </div>
+            </div>   
+        </main>
     )
 }
 

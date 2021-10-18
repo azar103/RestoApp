@@ -96,3 +96,7 @@ button{
 .status_color_black{
   background: #ddd;
 }
+
+main {
+  padding: 100px 0px;
+}

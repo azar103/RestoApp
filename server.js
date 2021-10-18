@@ -6,16 +6,7 @@ const cartRouter = require('./routers/cart');
 const orderRouter = require('./routers/order');
 const cors = require('cors');
 const app = express();
-const http = require('http');
-const server = http.createServer(app);
-const { Server } = require('socket.io');
 
-const io = new Server(server, {
-    cors: {
-        origin: 'http://localhost:3000',
-        methods: ["GET","POST","PUT"]
-    }
-});
 const port = 5000 || process.env.PORT;
 connectDB();
 app.use(express.json());
@@ -33,17 +24,8 @@ app.use('/api/foods', foodRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/orders', orderRouter);
 
-io.on('connection', (socket) => {
-    console.log('a userSocket is connected');
-    socket.on('diconnect', () => {
-        console.log('User is disconnected');
-    })
-    socket.on('addd', (order) => {
-        console.log('order :' + order);
-    })
-});
 
-server.listen(port, (err) => {
+app.listen(port, (err) => {
     if (err) {
         console.log('server is not running');
     } else {
@@ -52,7 +34,3 @@ server.listen(port, (err) => {
 });
 
 
-
-
-
-module.exports = server;

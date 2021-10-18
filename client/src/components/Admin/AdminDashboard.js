@@ -8,11 +8,13 @@ const AdminDashboard = ({ children }) => {
         return <Loading />
     }
     return (
+        <main>
         <div className="dashboard">
            <div className="container">
                 {children}
            </div>
-        </div>
+            </div>
+        </main>    
     )
 }
 

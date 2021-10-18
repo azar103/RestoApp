@@ -48,7 +48,9 @@ const Login = () => {
     }
  
 
-        return (
+    return (
+        <main>
+            <div className="container">
             <div className="form-login">
                 <h2>Login</h2>
                 {msg ? <div className="message-error">{msg}</div> : null}
@@ -75,6 +77,8 @@ const Login = () => {
                 </form>
         
             </div>
+            </div>
+            </main>
         )
     
    

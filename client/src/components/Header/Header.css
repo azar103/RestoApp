@@ -11,6 +11,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
+    flex-wrap: wrap;
 }
 
 .header-content >a .logo_label {
@@ -84,24 +85,8 @@
     border-radius: 30px;
 }
 
-.menu-icons label {
-    display: block;
-    width: 15px;
-    height: 15px;
-    background-image: url('../../assets/images/ic_menu.png');
-    margin-right: 20px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
 
-.menu-icons label{
-    visibility: hidden;
-}
 
-input[type="checkbox"]{
-    visibility: hidden;
-}
 .menu-icons > a {
     color: var(--secondry-color);
     min-width:30px;
@@ -168,28 +153,52 @@ input[type="checkbox"]{
 .fa-shopping-cart{
     position: relative;
 }
+.checkbtn{     
+    line-height: 80px;
+    cursor: pointer;
+    display: none;
 
-/*@media (max-width: 991px){
-    .menu-icons label{
-        visibility: visible;
+}
+#check{
+    display: none;
+}
+
+
+@media (max-width: 952px){
+ 
+    a{
+        font-size: 16px;
     }
-    .header-content {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+}
+
+@media (max-width:885px) {
+    /*.menu-toggle>*{
+        width: 100%;
     }
-    
-    .header-content .menu-icons {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+    .menu-toggle{
+        width: 100%;
     }
-    .header-content .menu-icons >.icon {
-        margin-bottom: 20px;
+    .checkbtn{
+        display: block;
     }
-    .header-content .btn-login{
-        margin-left: 0px;
+    .menu-icons{
+        position: fixed;
+        width: 100%;  
+        top: 80px;
+        left: 0px;
+        display: none;
+        text-align: center;
+        transition:  all .5s;
     }
-  
+    .menu-icons a {
+        display: block;
+        line-height: 30px;
+    }
+    #check:checked ~ .menu-icons{
+              display: block;  
+              position: absolute;
+              top: 10px;
+              left: 0px;
+    }*/
    
-}*/
+}

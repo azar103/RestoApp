@@ -12,6 +12,7 @@
     color: var(--primary-color);
     text-align: left;
     font-size: 30px;
+    text-align: center;
 }
 
 .form-register form {

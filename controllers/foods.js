@@ -3,7 +3,7 @@ const Food = require('../models/Food');
 
 exports.getFoods = async (req, res, next) => {
     try {
-        const foods = await Food.find();
+        const foods = await Food.find().sort('-createdAt');
         res.status(200).send(foods);
     } catch (error) {
         res.status(500).send({error})

@@ -1,0 +1,14 @@
+@media (max-width: 958px) {
+    .box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .box .items_cart{
+        width: 86%;
+    }
+    .box .total_box{
+        width: 90%;
+    }
+
+}

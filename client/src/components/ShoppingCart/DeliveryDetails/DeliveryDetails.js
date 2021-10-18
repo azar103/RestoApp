@@ -46,7 +46,7 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
             locality: formData.locality,
             street: formData.street,
             zipCode: formData.zipCode,
-            phoneNumber: formData.phoneNumber
+            phone: formData.phoneNumber
         }
     }
 
@@ -71,7 +71,6 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
 
             dispatch(saveOrder(order));
             dispatch(deleteItems(user._id));
-            socket.emit('add', order);  
         setFormData({
             ...formData,
             locality: '',

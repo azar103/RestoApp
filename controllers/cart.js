@@ -24,7 +24,6 @@ exports.postItemCart = async (req, res, next) => {
         cartItem = new Cart({
             ...req.body
         });
-        console.log(cartItem);
         await cartItem.save();
         res.status(200).send({msg:"Item Added Successufly"})
     } catch (error) {

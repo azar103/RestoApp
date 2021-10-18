@@ -7,20 +7,9 @@ import './Orders.css';
 import { io } from 'socket.io-client';
 const Orders = () => {
     const dispatch = useDispatch();
-    const socket = io('http://localhost:5000');
     const { orders } = useSelector(state => state.order);
     const { user: { _id } } = useSelector(state => state.auth);
-    useEffect(() => {
-        dispatch(getOrders());
-        socket.on('orders', (data) => {
-            if (data === "create") {
-                dispatch(getOrders());
-            } else if (data === "update") {
-                dispatch(getOrders())
-            }
-        })
-    
-    },[])
+    console.log(orders);
     return (
         <AdminDashboard>
         <div className="orders_list">

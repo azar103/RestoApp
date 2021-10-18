@@ -32,13 +32,18 @@ const Header = () => {
                         <i className="fas fa-utensils logo"></i><span className="logo_label">Resto.</span>
                     </Link>      
                     <input type="checkbox" id="check" />
-            
-                        
+                    <label for="check" className="checkbtn">
+                       <i className="fas fa-bars"/>
+                    </label>   
+                     
+               
                     <div className="menu-icons">
+                   
                         {
                             isAuth ?
                                 user.account.role === "ROLE_USER" ?
                                     <>
+                                      
                                 <span style={{
                                     marginRight: '10px',
                       
@@ -46,8 +51,7 @@ const Header = () => {
                                         <Link to="/orderDetails">
                                         <i class="fa fa-shopping-bag icon"></i>
                                         </Link>
-                                    <Link to="/shopping-cart">
-                            
+                                    <Link to="/shopping-cart">     
                                             <i className="fas fa-shopping-cart icon">
                                                 {numberOfItems() > 0 && 
                                                     <div className="notification">{numberOfItems()}</div>
@@ -55,6 +59,7 @@ const Header = () => {
                                            
                                             </i>
                                         </Link>
+                                 
                                         </>
                                     :
                                     <span id="menu">Admin <i class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -79,7 +84,9 @@ const Header = () => {
                             >
                             <i className="fas fa-sign-in-alt icon"></i>
                                 Logout
-                            </Link>
+                                    </Link>
+                                 
+
                                 :
                                 <Link className="btn-login opacity"
                                     to="/login"
@@ -88,8 +95,14 @@ const Header = () => {
                                     Login
                                     </Link>  
                         }
+                       
+            
+            
                 
+                  
                     </div>
+                  
+              
                 </div>    
             </div>
         </div>

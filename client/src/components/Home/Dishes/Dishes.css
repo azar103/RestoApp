@@ -18,3 +18,11 @@
     align-items: center;
     margin-bottom: 20px;
 }
+
+@media (max-width: 991px){
+    header{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}

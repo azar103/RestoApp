@@ -17,6 +17,7 @@ import EditFood from './components/Admin/EditFood/EditFood';
 import AdminDashboard from './components/Admin/AdminDashboard';
 import OrderDetails from './components/OrderDetails/OrderDetails';
 import Orders from './components/Admin/Orders/Orders';
+import Footer from './components/Footer/Footer';
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -38,7 +39,7 @@ function App() {
         <ProtectedRoute path="/admin/editFood/:_id" component={EditFood} />
         <ProtectedRoute path="/admin/orders" component={Orders}/>
       </Switch>
-
+     <Footer />
     </BrowserRouter>
   );
 }

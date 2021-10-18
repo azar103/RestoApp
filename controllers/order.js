@@ -3,13 +3,9 @@ const Order = require('../models/Order');
 const { Server } = require('socket.io');
 const app = require('../server');
 const server = require('../server');
+const Account = require('../models/Account');
+const User = require('../models/User');
 
-const io = new Server(server, {
-    cors: {
-        origin: 'http://localhost:3000',
-        methods: ["GET","POST","PUT"]
-    }
-});
 
 exports.getOrders = async (req, res, next) => {
     try {
@@ -21,19 +17,17 @@ exports.getOrders = async (req, res, next) => {
 }
 exports.postOrder = async (req, res, next) => {
     try {
-        const { locality, street, zipCode, phoneNumber } = req.body.user.address;
-        if (!locality || !street || !zipCode || !phoneNumber) {
-            return res.status(500).send({ msg: 'address fields required' });
+        const { locality, street, zipCode, phone } = req.body.user.address;
+        if (!locality || !street || !zipCode || !phone) {
+            return res.status(400).send({msg:"address fileds required!"});
         }
-        const order = new Order({
-            ...req.body
+       const order = new Order({
+           ...req.body
         })
         await order.save();
         res.status(200).send(order);
-
-        io.emit('orders', { action: "create", order });
-        console.log(io);
     } catch (error) {
+        console.dir(error);
         res.status(500).send({ error });
     }
 }

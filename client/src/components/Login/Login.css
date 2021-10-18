@@ -1,21 +1,20 @@
 .form-login {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-
+    margin: auto;
     width: 50%;
+
 }
 .form-login h2{
     color: var(--primary-color);
     text-align: left;
     font-size: 30px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 .form-login form {
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
+   
 }
 
 .form-login form input {
