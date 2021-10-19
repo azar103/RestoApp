@@ -1,42 +1,26 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
-import Dishes from './Dishes/Dishes';
-import Loading from '../Loading/Loading';
-
-
-import './Home.css';
-
-
-import AdminDashboard from '../Admin/AdminDashboard';
-import Foods from '../Admin/Foods/Foods';
-
+import './Home.css'
 const Home = () => {
-    const loading = useSelector(state => state.auth.isLoading);
-    let user = useSelector(state => state.auth.user);
-    if (loading) {
-        return <Loading />
-    }
 
-    if (!user || user.account.role === "ROLE_USER") {
-        return (
-            <div className="home">
-                <div className="home-header"
-                >
-                    <div className="overlay">
-                        <h1>White Palace Grill</h1>
-                        <p>Address: 2000, rue de gabes, bardo</p>
-                        <p>Call: +216  22555222</p>
-                        <p>Open: to 8am to 11pm</p>
-                    </div>
+    return (
+        <main>
+            <div className="container">
+                <div className="home_header">
+                    <i className="fas fa-map-marker-alt"></i>
+                    <h2>Livred to </h2>
                 </div>
-                <Dishes />
-             
+                <input type="text" className="input_search_restaurants"
+                    placeholder="Enter your delivery address"
+                    autoComplete="off"
+                    style={{padding:"20px"}}
+                />
+                <section className="restaurants_list">
+                    <h2>our deals</h2>
+                    <p>No Restaurants currently available in your area</p>
+                </section>
             </div>
-        )
-    } else {
-        return <Foods />
-    }
-   
+        </main>
+    )
 }
 
 export default Home
