@@ -4,6 +4,7 @@ const authRouter = require('./routers/auth');
 const foodRouter = require('./routers/foods');
 const cartRouter = require('./routers/cart');
 const orderRouter = require('./routers/order');
+const restaurantRouter = require('./routers/restaurant');
 const cors = require('cors');
 const app = express();
 
@@ -23,7 +24,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/foods', foodRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/orders', orderRouter);
-
+app.use('/api/restaurants', restaurantRouter);
 
 app.listen(port, (err) => {
     if (err) {
