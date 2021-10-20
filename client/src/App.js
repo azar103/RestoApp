@@ -18,6 +18,7 @@ import Orders from './components/Admin/Orders/Orders';
 import Footer from './components/Footer/Footer';
 import Restaurant from './components/Restaurant/Restaurant';
 import Home from './components/Home/Home';
+import AddRestaurant from './components/AddRestaurant/AddRestaurant';
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -32,15 +33,15 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/contact" component={Contact} />
+        <Route path="/addRestaurant" component={AddRestaurant} />
         <ProtectedRoute path="/orderDetails" component={OrderDetails}/>
-        <ProtectedRoute path="/favorites" component={Favorites} />
         <ProtectedRoute path="/shopping-cart" component={ShoppingCart} />
         <ProtectedRoute path="/admin/foods" component={Foods} />
         <ProtectedRoute path="/admin/createFood" component={AddFood} />
         <ProtectedRoute path="/admin/editFood/:_id" component={EditFood} />
         <ProtectedRoute path="/admin/orders" component={Orders}/>
       </Switch>
-     <Footer />
+     <Footer /> 
     </BrowserRouter>
   );
 }

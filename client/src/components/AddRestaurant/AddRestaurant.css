@@ -1,0 +1,62 @@
+.add_restaurant_content{
+    width: 80%;
+    margin: auto;
+    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.add_restaurant_content > form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.add_restaurant_content > form > input[type="text"],form >input[type="password"]{
+   border-bottom: 1px solid #ccc;
+   width: 98%;
+   padding: 0px 0px 5px 0px;
+   margin: 0px 0px 30px 8px;
+   
+}
+
+.add_restaurant_content > h2{
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+.add_restaurant_content > span {
+    margin-left: 8px;
+}
+
+.address_section > h2{
+    font-size: 1rem;
+    margin-left: 7px;
+    color: var(--secondary-color);
+}
+
+.form_address_section{
+    padding: 10px;
+}
+.form_address_section > input[type="text"], input[type="password"] {
+    border-bottom: 1px solid #ccc;
+    width: 30%;
+    
+}
+.form_address_section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+input[type="submit"] {
+    width: 50%;
+    padding: 10px;
+    border-radius: 5%;
+    font-weight: bold;
+    margin: auto;
+}
+
+input[type="file"]{
+    border: none;
+    margin-bottom: 30px;
+}

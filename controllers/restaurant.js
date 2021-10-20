@@ -13,11 +13,11 @@ exports.getRestaurants = async (req, res, next) => {
 
 exports.createRestaurant = async (req, res, next) => {
     try {
-        const { name, imageUrl, items, address, minOrderAmount } = req.body;
-        console.log(req.body);
+        const { name,items, address, minOrderAmount } = req.body;
         const { street, locality, zip, lat, lng, phoneNum } = address;
-        const { email, password, passwordConfirmed} = req.body.account;
-       if (!name || !imageUrl || !street || !locality || !zip || !lat || !lng || !phoneNum || !email || !street || !locality || !items) {
+        const { email, password, passwordConfirmed } = req.body.account;
+        const { file } = req;
+       if (!name || !file || !street || !locality || !zip || !lat || !lng || !phoneNum || !email || !street || !locality || !items) {
             return res.status(500).send({msg:'all fields are required'})
         }
         if (password !== passwordConfirmed) {
@@ -40,7 +40,7 @@ exports.createRestaurant = async (req, res, next) => {
         const accountSaved= await account.save();
         const restaurant = new Restaurant({
             name,
-            imageUrl,
+            imageUrl: file.path || null,
             address: {
                 street,
                 locality,

@@ -40,7 +40,7 @@ const FoodItem = ({ item }) => {
                             >add to cart</Link>
                             :
                         <Link
-                            to="/"
+                            to="/restaurant"
                             className="btn opacity"
                             onClick={addToCart}
                         >add to cart</Link>    
