@@ -28,7 +28,7 @@ const Login = () => {
     }, [error.msg]);
     useEffect(() => {
         if (isAuth) {
-            history.push('/restaurant');
+            history.push('/');
         } 
         dispatch(clearErrors())
     }, [isAuth, clearErrors])

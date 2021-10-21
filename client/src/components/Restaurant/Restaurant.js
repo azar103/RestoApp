@@ -3,16 +3,15 @@ import { useSelector } from 'react-redux';
 import Dishes from './Dishes/Dishes';
 import Loading from '../Loading/Loading';
 import './Restaurant.css';
-import Foods from '../Admin/Foods/Foods';
+
 
 const Restaurant = () => {
     const loading = useSelector(state => state.auth.isLoading);
-    let user = useSelector(state => state.auth.user);
+
     if (loading) {
         return <Loading />
     }
 
-    if (!user || user.account.role === "ROLE_USER") {
         return (
             <div className="home">
                 <div className="home-header"
@@ -28,9 +27,7 @@ const Restaurant = () => {
              
             </div>
         )
-    } else {
-        return <Foods />
-    }
+
    
 }
 

@@ -14,15 +14,16 @@ const AddFood = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [msg, setMsg] = useState(null);
-    const error = useSelector(state => state.error);
-    useEffect(() => {
+    const { error } = useSelector(state => state.error);
+    const {_id} = useSelector(state => state.auth.user.account)
+    /*useEffect(() => {
         if (error.id === 'CREATE_FOOD_ERROR') {
             setMsg(error.msg.msg)
         } else {
             setMsg(null);
         }
 
-    }, [error.msg]);
+    }, [error.msg]);*/
 
     const onChange = (e) => {
         setFormData({
@@ -38,11 +39,14 @@ const AddFood = () => {
         form.append('price', formData.price);
         form.append('description', formData.description);
         form.append('urlImg', fieldValue);
+        form.append('owner', _id);
+
         dispatch(saveFood(form));
         if(msg===null)
             history.push('/admin/foods');
     }
     return (
+        <main>
         <div className="form_create_food">
             <div className="container">
                 <h2>Create Food</h2>
@@ -78,7 +82,8 @@ const AddFood = () => {
                     <input type="submit" value="save" className="opacity"/>
                 </form>
             </div>     
-        </div>
+            </div>
+            </main>
     )
 }
 

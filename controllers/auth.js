@@ -2,6 +2,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Account = require('../models/Account');
+const Restaurant = require('../models/Restaurant');
 exports.register = async (req, res, next) => {
     try {
         const { firstName, lastName, email, password, passwordConfirmed, role } = req.body;
@@ -63,7 +64,15 @@ exports.login = async (req, res, next) => {
         if (!match) {
             return res.status(500).send({ msg: 'invalid email/password' });
         }
-        const user= await User.findOne({account:account._id.toString()})
+        let user;
+        if (account.role === "ROLE_USER") {
+             user= await User.findOne({account:account._id.toString()})
+        } else if (account.role === "ROLE_SELLER") {
+            user = await Restaurant.findOne({
+                account: account._id.toString()
+            });
+        }
+       
         const payload = {
             _id: user.id
         }

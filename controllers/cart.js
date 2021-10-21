@@ -58,7 +58,6 @@ exports.editQuantityAndPrice = async (req, res, next) => {
 exports.deleteItemsByUserId = async (req, res, next) => {
     try {
         const { userId } = req.params;
-        console.log('delete');
         await Cart.findOne({ userId }).remove();
         res.status(200).send({ msg: 'item deleted' });
     } catch (error) {

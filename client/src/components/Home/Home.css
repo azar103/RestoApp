@@ -17,8 +17,14 @@
 .home_header > h2{
     margin-top: 20px;
     margin-left: 5px;
+    text-transform: capitalize;
 }
+.restaurants_list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 
+}
 .restaurants_list > h2{
     color: #4a4a4a;
     font-size: 1.5rem;
@@ -30,4 +36,8 @@
 
 .restaurants_list > p {
     color: #afafaf;
+}
+
+section > h2{
+    text-transform: capitalize;
 }

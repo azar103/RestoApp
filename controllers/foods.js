@@ -1,4 +1,5 @@
 const Food = require('../models/Food');
+const Account = require('../models/Account');
 
 
 exports.getFoods = async (req, res, next) => {
@@ -12,18 +13,19 @@ exports.getFoods = async (req, res, next) => {
 
 exports.saveFood = async (req, res, next) => {
     try {
-        const { name, description, price } = req.body;
+        const { name, description, price, owner } = req.body;
         const { file } = req;
         if (!name || !description || !price || !file) {
             return res.status(400).send({msg:'please fill in all the fields'})
         }
         let food = await Food.findOne({ name });
 
+
         if (food) {
             return res.status(400).send({ msg: 'Food already exist' });
         }
         food = new Food({
-            name, description, price, urlImg:file.path  || null
+            name, description, price,owner, urlImg:file.path || null
         });
         await food.save();
         res.status(200).send(food); 

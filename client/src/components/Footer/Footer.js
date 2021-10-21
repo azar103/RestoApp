@@ -6,7 +6,7 @@ const Footer = () => {
   const { isAuth, isLoading } = useSelector(state => state.auth);
   const history = useHistory();
   const location = useLocation();
-  console.log(location);
+
   if (!isLoading && location.pathname !== "/addRestaurant") {
     return (
       <footer>

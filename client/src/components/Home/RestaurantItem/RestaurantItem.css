@@ -1,0 +1,41 @@
+.restaurant{
+    width: 407px;
+    height: 188px;
+
+    margin: 60px 0;
+}
+
+.restaurant > .image{
+    height: 200px;
+    width: 100%;
+}
+
+.image > img {
+    width: 100%;
+    height: 100%;
+}
+
+.restaurant_footer > h3{
+    margin-left: 5px;
+    margin-top: 8px;
+}
+
+.restaurant_footer > .button_section > a{
+    min-width: 180px;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    margin-top: 5px;
+    padding: 8px;
+    display: block;
+    background: var(--primary-color);
+    text-align: center;
+}
+
+.button_section {
+    padding: 8px;
+
+}
+.restaurant_footer > .button_section > a{
+    text-transform: capitalize;
+}

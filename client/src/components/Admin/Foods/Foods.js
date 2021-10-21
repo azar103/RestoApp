@@ -7,12 +7,11 @@ import { deleteFood, getAllFoods } from '../../../Store/actions/foodActions';
 import FoodRow from '../FoodRow/FoodRow';
 const Foods = () => {
   const dispatch = useDispatch();
-  const [openPopup, setOpenPopup] = useState(false);
   const [searchedValue, setSearchedValue] = useState('');
   useEffect(() => {
     dispatch(getAllFoods())
   })
-  const foods = useSelector(state => state.foods.foods);
+  const { foods } = useSelector(state => state.foods);
   
   const onChange = (e) => {
     setSearchedValue(e.target.value);

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-
+const restaurantCtrl = require('../controllers/restaurant');
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads')
@@ -17,7 +17,7 @@ router.post('/upload', upload, (req, res, next) => {
         path: req.file.path
    })
 })
-const restaurantCtrl = require('../controllers/restaurant');
+
 
 router.get('/', restaurantCtrl.getRestaurants);
 router.post('/',upload, restaurantCtrl.createRestaurant);

@@ -1,4 +1,4 @@
-import { AUTH_ERROR, GET_AUTH_ME, GET_USERS, IS_ADMIN, IS_LOADING, LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT, NOT_LOADING, REGISTER_ERROR, REGISTER_SUCCESS } from '../actions/actionTypes';
+import { AUTH_ERROR, GET_AUTH_ME, IS_LOADING, LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT, NOT_LOADING, REGISTER_ERROR, REGISTER_SUCCESS } from '../actions/actionTypes';
 const initState = {
     isAuth: false,
     isLoading: false,
@@ -23,12 +23,6 @@ const authReducer = (state = initState, { type, payload }) => {
                 isLoading: true
             }
         }
-        case NOT_LOADING: {
-            return {
-                ...state,
-                isLoading: false
-            }
-        }    
         case GET_AUTH_ME:
             return {
                 ...state,

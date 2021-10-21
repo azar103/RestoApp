@@ -23,88 +23,86 @@ const Header = () => {
         }
             
     }
-
+     console.log(isAuth);
     return (
         <div className="header">
-            <div className="container">
-                <div className="header-content">
-                   <Link to="/">
-                        <i className="fas fa-utensils logo"></i><span className="logo_label">iki Resto</span>
-                    </Link>      
-                    <input type="checkbox" id="check" />
-                    <label for="check" className="checkbtn">
-                       <i className="fas fa-bars"/>
-                    </label>   
-                     
-               
-                    <div className="menu-icons">
-                   
-                        {
-                            isAuth ?
-                                user.account.role === "ROLE_USER" ?
-                                    <>
-                                      
-                                <span style={{
-                                    marginRight: '10px',
-                      
-                                    }}>Hello, {`${user.firstName} ${user.lastName}`}</span>
-                                        <Link to="/orderDetails">
-                                        <i class="fa fa-shopping-bag icon"></i>
-                                        </Link>
-                                    <Link to="/shopping-cart">     
-                                            <i className="fas fa-shopping-cart icon">
-                                                {numberOfItems() > 0 && 
-                                                    <div className="notification">{numberOfItems()}</div>
-                                                }
-                                           
-                                            </i>
-                                        </Link>
-                                 
-                                        </>
-                                    :
-                                    <span id="menu">Admin <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                                        <ul className="dropdown">
-                                            <li><Link to="/admin/foods">Foods</Link></li>
-                                            <li><Link to="/admin/orders">Orders</Link></li>
-                                        </ul>
-                                    </span>
-                                
-                                :
-                            null                    
-                        }
-    
-                        {
-                            isAuth ?
-                            <Link className="btn-login opacity"
-                                    to="/login"
-                                    onClick={() => {
-                                        dispatch(logout())
-                                        history.push('/login')
-                                    }}
-                            >
-                            <i className="fas fa-sign-in-alt icon"></i>
-                                Logout
-                                    </Link>
-                                 
-
-                                :
-                                <Link className="btn-login opacity"
-                                    to="/login"
-                                >
-                                <i className="fas fa-sign-in-alt icon"></i>
-                                    Login
-                                    </Link>  
-                        }
-                       
-            
-            
-                
-                  
-                    </div>
-                  
+       {/** */} <div className="container">
+        <div className="header-content">
+           <Link to="/">
+                <i className="fas fa-utensils logo"></i><span className="logo_label">iki Resto</span>
+            </Link>      
+            <input type="checkbox" id="check" />
+            <label for="check" className="checkbtn">
+               <i className="fas fa-bars"/>
+            </label>   
+             
+       
+            <div className="menu-icons">
+           
+                {
+                    isAuth ?
+                        user.account.role === "ROLE_USER" ?
+                            <>
+                              
+                        <span style={{
+                            marginRight: '10px',
               
-                </div>    
+                            }}>Hello, {`${user.firstName} ${user.lastName}`}</span>
+                                <Link to="/orderDetails">
+                                <i class="fa fa-shopping-bag icon"></i>
+                                </Link>
+                            <Link to="/shopping-cart">     
+                                    <i className="fas fa-shopping-cart icon">
+                                        {numberOfItems() > 0 && 
+                                            <div className="notification">{numberOfItems()}</div>
+                                        }
+                                   
+                                    </i>
+                                </Link>
+                         
+                                </>
+                            :
+                            <span id="menu">Admin <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                <ul className="dropdown">
+                                    <li><Link to="/admin/foods">Foods</Link></li>
+                                    <li><Link to="/admin/orders">Orders</Link></li>
+                                </ul>
+                            </span>
+                        
+                        :
+                    null                    
+                }
+
+                {
+                    isAuth ?
+                    <Link className="btn-login opacity"
+                            to="/login"
+                            onClick={() => {
+                                dispatch(logout())
+                                history.push('/login')
+                            }}
+                    >
+                    <i className="fas fa-sign-in-alt icon"></i>
+                        Logout
+                            </Link>   
+                        :
+                        <Link className="btn-login opacity"
+                            to="/login"
+                        >
+                        <i className="fas fa-sign-in-alt icon"></i>
+                            Login
+                            </Link>  
+                }
+               
+    
+    
+        
+          
             </div>
+          
+      
+        </div>    
+    </div>
         </div>
     )
 }
