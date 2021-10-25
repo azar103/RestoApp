@@ -62,12 +62,15 @@ const Login = () => {
                         name="email"    
                         onChange={onHandleChangeForm}
                         value={formData.email}
+                        className=""    
                     />
                     <label>Password:</label>
-                    <input type="password" placeholder="password..."
-                    name="password"    
-                    onChange={onHandleChangeForm}
-                    value={formData.password}
+                        <input
+                            type="password"
+                            placeholder="password..."
+                            name="password"    
+                            onChange={onHandleChangeForm}
+                            value={formData.password}
                     />
                     <Link to="/register">
                       if you are not a member, register here

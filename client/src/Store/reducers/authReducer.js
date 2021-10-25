@@ -10,12 +10,12 @@ const authReducer = (state = initState, { type, payload }) => {
     switch (type) {
         case REGISTER_SUCCESS:
         case LOGIN_SUCCESS:
+            localStorage.setItem('token', payload.token)
             return {
                 ...state,
                 isAuth: true,
                 isLoading: false,
                 ...payload,
-                token: localStorage.setItem('token', payload.token)
             }
         case IS_LOADING: {
             return {
@@ -30,7 +30,6 @@ const authReducer = (state = initState, { type, payload }) => {
                 isLoading: false,
                 ...payload
             }
- 
         case LOGOUT:
         case LOGIN_ERROR:
         case REGISTER_ERROR:

@@ -1,12 +1,10 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Loading from '../Loading/Loading';
 import './AdminDashboard.css';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import { getCurrentUser } from '../../Store/actions/authActions';
 const AdminDashboard = ({ children }) => {
-    const loading = useSelector(state => state.auth.isLoading);
-    if (loading) {
-        return <Loading />
-    }
+
     return (
         <main>
         <div className="dashboard">

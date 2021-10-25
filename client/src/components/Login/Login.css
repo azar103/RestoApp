@@ -23,11 +23,13 @@
     background-color: #eee;
 }
 
-input[type="text"], input[type="password"]{
+input[type="text"]
+{
     min-width: 200px;
     margin-bottom: 20px;
     padding: 10px;
 }
+
 
 .form-login form label {
     margin-bottom: 10px;

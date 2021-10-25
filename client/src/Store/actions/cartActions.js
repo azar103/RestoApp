@@ -10,7 +10,7 @@ export const getCartItems = () => async dispatch => {
             payload: res.data
         })
     } catch (error) {
-        dispatch(returnErrors(error.response.data, error.response.status, 'ADD_FOOD_ERROR'));
+        //dispatch(returnErrors(error.response.data, error.response.status, 'ADD_FOOD_ERROR'));
     }
 }
 export const addItemToCart = (item) => async dispatch => {

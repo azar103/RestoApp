@@ -20,6 +20,8 @@ router.post('/upload', upload, (req, res, next) => {
 
 
 router.get('/', restaurantCtrl.getRestaurants);
-router.post('/',upload, restaurantCtrl.createRestaurant);
-
+router.post('/', upload, restaurantCtrl.createRestaurant);
+router.get('/:name', restaurantCtrl.getRestaurantByName);
+router.get('/:_id', restaurantCtrl.getRestaurantById);
+router.get('/:_name/:_id', restaurantCtrl.removeRestaurantItems);
 module.exports = router;

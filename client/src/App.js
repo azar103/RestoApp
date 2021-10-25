@@ -23,7 +23,6 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCurrentUser());
-  
   }, [])
   return (
     <BrowserRouter>

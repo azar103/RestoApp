@@ -11,15 +11,18 @@ export const login = (formData) => async dispatch => {
                 payload: res.data
             })
         }, 3000);
-    } catch (error) {
-        dispatch(returnErrors(error.response.data, error.response.status, 'LOGIN_ERROR'));
+    } catch (err) {
+
+           // dispatch(returnErrors(err.response.data, err.response.status, 'LOGIN_ERROR'));
         setTimeout(() => {
             dispatch({
                 type: LOGIN_ERROR
             })
         }, 3000);
+       }
+       
         
-    }
+    
 }
 
 
@@ -60,7 +63,8 @@ export const getCurrentUser = () => async dispatch => {
             })
         }, 3000);    
     } catch (error) {
-        setTimeout(() => {
+        console.dir(error);
+       setTimeout(() => {
             dispatch(returnErrors(error.response.data, error.response.status))
         }, 3000);
         dispatch({

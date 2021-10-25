@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import { getCurrentUser } from '../../../Store/actions/authActions';
 import { clearErrors } from '../../../Store/actions/errorActions';
 import { saveFood } from '../../../Store/actions/foodActions';
 import './AddFood.css'
 const AddFood = () => {
+
     const [formData, setFormData] = useState({
         name: '',
         price: '',
@@ -15,7 +17,8 @@ const AddFood = () => {
     const history = useHistory();
     const [msg, setMsg] = useState(null);
     const { error } = useSelector(state => state.error);
-    const {_id} = useSelector(state => state.auth.user.account)
+    const { user } = useSelector(state => state.auth)
+    console.log(user.account);
     /*useEffect(() => {
         if (error.id === 'CREATE_FOOD_ERROR') {
             setMsg(error.msg.msg)
@@ -24,7 +27,8 @@ const AddFood = () => {
         }
 
     }, [error.msg]);*/
-
+    
+    
     const onChange = (e) => {
         setFormData({
             ...formData,
@@ -32,6 +36,7 @@ const AddFood = () => {
         })
         dispatch(clearErrors())
     }
+
     const onSubmit = (e) => {
         e.preventDefault();
         const form = new FormData();
@@ -39,10 +44,11 @@ const AddFood = () => {
         form.append('price', formData.price);
         form.append('description', formData.description);
         form.append('urlImg', fieldValue);
-        form.append('owner', _id);
-
+ 
+  
+        form.append('ownerId',user.account._id);
         dispatch(saveFood(form));
-        if(msg===null)
+       if(msg===null)
             history.push('/admin/foods');
     }
     return (

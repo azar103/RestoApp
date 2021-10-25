@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_RESTAURANTS, IS_LOADING,LOGIN_ERROR,LOGIN_SUCCESS, REGISTER_ERROR, REGISTER_SUCCESS} from './actionTypes';
+import { GET_RESTAURANT, GET_RESTAURANTS, IS_LOADING,LOGIN_ERROR,LOGIN_SUCCESS, REGISTER_ERROR, REGISTER_SUCCESS} from './actionTypes';
 import { returnErrors } from './errorActions';
 
 export const createRestaurant = (formData) => async dispatch => {
@@ -24,6 +24,40 @@ export const getRestaurants = () => async dispatch => {
             payload: res.data
         })
         
+    } catch (error) {
+        
+    }
+}
+
+export const getRestaurantByName = (name) => async dispatch => {
+    try {
+        const res = await axios.get(`http://localhost:5000/api/restaurants/${name}`);
+        dispatch({
+            type: GET_RESTAURANT,
+            payload: res.data
+        })
+    } catch (error) {
+        
+    }
+}
+
+export const getRestaurantById = (id) => async dispatch => {
+    try {
+        const res = await axios.get(`http://localhost:5000/api/restaurants/${id}`);
+        dispatch({
+            type: GET_RESTAURANT,
+            payload: res.data
+        })
+    } catch (error) {
+        
+    }
+
+}
+
+export const removeRestaurantItem = (name, id) => async dispatch => {
+    try {
+        await axios.get(`http://localhost:5000/api/restaurants/${name}/${id}`);
+        dispatch(getRestaurantByName(name));
     } catch (error) {
         
     }

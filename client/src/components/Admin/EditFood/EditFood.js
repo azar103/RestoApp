@@ -16,6 +16,7 @@ const EditFood = ({match}) => {
  
         useEffect(() => {
             dispatch(getOneFood(match.params._id));
+            
     
             setFormData({
                 ...formData,

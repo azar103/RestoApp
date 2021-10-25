@@ -3,16 +3,18 @@ import AdminDashboard from '../AdminDashboard'
 import {useDispatch, useSelector} from 'react-redux';
 import './Foods.css';
 import { Link } from 'react-router-dom';
-import { deleteFood, getAllFoods } from '../../../Store/actions/foodActions';
+import {getRestaurantByName, removeRestaurantItem } from '../../../Store/actions/restaurantActions';
 import FoodRow from '../FoodRow/FoodRow';
+
+
 const Foods = () => {
   const dispatch = useDispatch();
   const [searchedValue, setSearchedValue] = useState('');
+  const { user } = useSelector(state => state.auth);
   useEffect(() => {
-    dispatch(getAllFoods())
+    dispatch(getRestaurantByName(user.name));
   })
-  const { foods } = useSelector(state => state.foods);
-  
+  const { restaurant } = useSelector(state => state.restaurant);
   const onChange = (e) => {
     setSearchedValue(e.target.value);
   } 
@@ -36,10 +38,10 @@ const Foods = () => {
           </tr>
           <tbody>
             {
-            foods && foods.filter((item) => item.name.toLowerCase().indexOf(searchedValue.toLowerCase())!== -1).map((food) => 
+            restaurant.items && restaurant.items.filter((item) => item.name.toLowerCase().indexOf(searchedValue.toLowerCase())!== -1).map((food) => 
               <FoodRow item={food}
                 onDeleteClick={() => {
-                   dispatch(deleteFood(food))
+                   dispatch(removeRestaurantItem(user.name, food._id))
                 }}
               />
               )

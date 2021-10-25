@@ -12,7 +12,7 @@
     margin-top: 20px;
 }
 
-.add_restaurant_content > form > input[type="text"],form >input[type="password"]{
+.add_restaurant_content > form > input[type="text"],form >.restaurant_password{
    border-bottom: 1px solid #ccc;
    width: 98%;
    padding: 0px 0px 5px 0px;
@@ -38,7 +38,7 @@
 .form_address_section{
     padding: 10px;
 }
-.form_address_section > input[type="text"], input[type="password"] {
+.form_address_section > input[type="text"], .restaurant_password {
     border-bottom: 1px solid #ccc;
     width: 30%;
     

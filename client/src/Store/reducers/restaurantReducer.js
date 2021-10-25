@@ -1,7 +1,8 @@
-const { GET_RESTAURANTS } = require("../actions/actionTypes")
+const { GET_RESTAURANTS, GET_RESTAURANT } = require("../actions/actionTypes")
 
 const initState = {
-    restaurants: []
+    restaurants: [],
+    restaurant: {}
 }
 
 
@@ -11,6 +12,13 @@ const restaurantReducer = (state = initState, { type, payload }) => {
             return {
                 ...state,
                 restaurants: [...payload]
+            }
+        case GET_RESTAURANT:
+            return {
+                ...state,
+                restaurant: {
+                    ...payload
+                }
             }
         default:
             return state;

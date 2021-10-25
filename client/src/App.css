@@ -104,3 +104,6 @@ button{
 main {
   padding: 100px 0px;
 }
+input[type="text"]{
+  width: 100%;
+}

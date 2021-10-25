@@ -7,7 +7,17 @@ exports.getRestaurants = async (req, res, next) => {
         const restaurants = await Restaurant.find();
         res.status(200).send(restaurants);
     } catch (error) {
+        console.dir(error);
         res.status(400).send({ error });
+    }
+}
+
+exports.findItem = async (req, res, next) => {
+    try {
+        console.log(req.params);
+    } catch (error) {
+        console.dir("2");
+        
     }
 }
 
@@ -58,7 +68,46 @@ exports.createRestaurant = async (req, res, next) => {
             user, token: "bearer " + token, msg: 'restaurant added  successfully'
         });
     } catch (error) {
-        console.dir(error);
+
         res.status(500).send(error);
     }
 }
+
+
+exports.getRestaurantByName = async (req, res, next) => {
+    try {
+        const { name } = req.params;
+        const restaurant = await Restaurant.findOne({ name });
+        res.status(200).send(restaurant);
+    } catch (error) {
+        
+    }
+}
+
+exports.getRestaurantById = async (req, res, next) => {
+    try {
+        const { _id } = req.params;
+        const restaurant = await Restaurant.findById(_id);
+        res.status(200).send(restaurant);
+    } catch (error) {
+        
+    }
+}
+
+exports.removeRestaurantItems = async (req, res, next) => {
+    try {
+        const { _id, _name } = req.params;
+        let restaurant = await Restaurant.findOne({ name:_name });
+        if (restaurant) {
+            const arr = restaurant.items.map((item) => item._id.toString());
+            const index = arr ? arr.indexOf(_id) : -1;
+            if (index != -1) {
+                restaurant.items.splice(index, 1);
+            }
+        }
+        await restaurant.save();
+    } catch (error) {
+        res.status(500).send({ error })
+    }
+}
+

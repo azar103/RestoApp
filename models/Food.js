@@ -9,10 +9,9 @@ const FoodSchema = new Schema({
     price: {type: String, required: true},
     urlImg: { type: String, required: true },
     description: { type: String, required: true },
-    owner: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        required:true
+    ownerId: {
+        type: String,
+        required: true
     }
 },
     {

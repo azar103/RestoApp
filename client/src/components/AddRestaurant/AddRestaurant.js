@@ -134,12 +134,14 @@ const AddRestaurant = () => {
                         <input type="password"
                             name="password"
                             onChange={onChange}
-                             value={formData.password}
+                            value={formData.password}
+                            className="restaurant_password"
                             placeholder="Password*" />
                         <input type="password"
                             name="passwordConfirmed"
                             onChange={onChange}
                             value={formData.passwordConfirmed}
+                            className="restaurant_password"
                             placeholder="Confirm your password*" />
                         <input type="submit" value="submit" className="opacity" />
                     </form>

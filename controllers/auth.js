@@ -90,37 +90,16 @@ exports.login = async (req, res, next) => {
 
 exports.authMe = async (req, res, next) => {
     let user = await User.findById(req.user);
-    const account = await Account.findById(user.account.toString()).select('-password').select('-passwordConfirmed');
+    let restaurant = await Restaurant.findById(req.user);
+    let account = null;
+    if (user) {
+         account = await Account.findById(user.account.toString()).select('-password').select('-passwordConfirmed');
+    } else {
+        account = await Account.findById(restaurant.account.toString()).select('-password').select('-passwordConfirmed');
+    }
+   
     user.account = account;
    res.status(200).send({user})
 }
 
-exports.getUsers = async (req, res, next) => {
-    try {
-        const users = await User.find();
-        const copy = [];
-    
-        users.forEach(async (user,index) => {
-            const account = await Account.findById(user.account.toString());
-            user.account = account;
-            copy.push(user)
-            console.log(copy);
-        })
-        res.status(200).send(copy);
-         
-    
-        //res.status(200).send(copy);
-    } catch (error) {
-        res.status(500).send({ error });
-    }
-}
 
-exports.checkAdmin = async (req, res, next) => {
-    try {
-        const { email } = req.body;
-        const user = await User.findOne({ email });
-        res.status(200).send({isAdmin: user.isAdmin});
-    } catch (error) {
-        
-    }
-}
