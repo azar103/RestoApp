@@ -111,3 +111,20 @@ exports.removeRestaurantItems = async (req, res, next) => {
     }
 }
 
+
+
+exports.updateRestaurant = async (req, res, next) => {
+    try {
+        const { _restaurantId, _itemId } = req.params;
+        const restaurant = await Restaurant.findById(_restaurantId);
+        const index = restaurant.items.map((item) => item._id.toString()).indexOf(_itemId);
+        restaurant.items[index].name = req.body.name;
+        restaurant.items[index].price = req.body.price;
+        restaurant.items[index].description = req.body.description;
+        restaurant.items[index].urlImg = req.file.path || null;
+        restaurant.markModified('items');
+         await restaurant.save();
+    } catch (error) {
+        res.status(500).send({msg: error.message})
+    }
+}

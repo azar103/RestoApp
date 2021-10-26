@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import {editFood, getOneFood} from '../../../Store/actions/foodActions';
+import { editRestaurant, getRestaurantByName } from '../../../Store/actions/restaurantActions';
+
 
 const EditFood = ({match}) => {
     const dispatch = useDispatch();
-    const food = useSelector(state => state.foods.food);
+    const { user } = useSelector(state => state.auth);
+    const { restaurant } = useSelector(state => state.restaurant);
+    
+    
     const [formData, setFormData] = useState({
         name: '',
         price: '',
@@ -13,19 +17,16 @@ const EditFood = ({match}) => {
     });
     const history = useHistory();
     const [fieldValue, setFieldValue] = useState('');
- 
+    const food = restaurant.items.find((item) => item._id === match.params._id);
         useEffect(() => {
-            dispatch(getOneFood(match.params._id));
-            
-    
+            dispatch(getRestaurantByName(user.name));
             setFormData({
                 ...formData,
                 name: food&&food.name,
                 price: food&&food.price,
                 description: food&&food.description
             })
-        
-        }, [food&&food._id]);
+        },[food&&food._id]);
   
     const onChange = (e) => {
         setFormData({
@@ -37,14 +38,12 @@ const EditFood = ({match}) => {
     const onSubmit = (e) => {
         e.preventDefault();
         const form = new FormData();
-        console.log(`food edited!`);
         form.append('name', formData.name);
         form.append('price', formData.price);
         form.append('description', formData.description);
         form.append('urlImg', fieldValue);
-        dispatch(editFood(match.params._id, form));
-        history.push('/admin/foods')
-        
+        dispatch(editRestaurant(user._id, match.params._id, form));
+        history.push('/admin/foods');
     }
     return (
         <div className="form_create_food">

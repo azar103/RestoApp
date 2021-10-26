@@ -29,6 +29,7 @@ exports.saveFood = async (req, res, next) => {
         food = new Food({
             name, description, price, urlImg:file.path || null
         });
+        food.save();
         const account = await Account.findById(ownerId);
         const restaurant = await Restaurant.findOne({
             "account": account._id

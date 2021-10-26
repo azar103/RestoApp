@@ -11,13 +11,17 @@ const Foods = () => {
   const dispatch = useDispatch();
   const [searchedValue, setSearchedValue] = useState('');
   const { user } = useSelector(state => state.auth);
-  useEffect(() => {
-    dispatch(getRestaurantByName(user.name));
-  })
   const { restaurant } = useSelector(state => state.restaurant);
+  useEffect(() => {
+    dispatch(getRestaurantByName(user.name.toString()));
+
+  })
+
   const onChange = (e) => {
     setSearchedValue(e.target.value);
-  } 
+  }
+
+
   return (
       <AdminDashboard>
          <header>

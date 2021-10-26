@@ -63,6 +63,16 @@ export const removeRestaurantItem = (name, id) => async dispatch => {
     }
 }
 
+
+export const editRestaurant = (restaurantId, itemId, form) => async dispatch => {
+    try {
+        await axios.put(`http://localhost:5000/api/restaurants/${restaurantId}/${itemId}`, form);
+        dispatch(getRestaurantById(restaurantId));
+    } catch (error) {
+        console.dir(error)
+    }
+}
+
 const setLoading = () => {
     return {
         type: IS_LOADING
