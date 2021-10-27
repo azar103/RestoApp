@@ -40,7 +40,7 @@ function App() {
         <ProtectedRoute path="/admin/editFood/:_id" component={EditFood} />
         <ProtectedRoute path="/admin/orders" component={Orders}/>
       </Switch>
-
+      <Footer />
     </BrowserRouter>
   );
 }

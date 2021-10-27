@@ -64,3 +64,14 @@ exports.deleteItemsByUserId = async (req, res, next) => {
         res.status(400).send({ error });
     }
 }
+
+exports.deleteAll = async (req, res, next) => {
+    try {
+        const { userId } = req.params;
+        await Cart.findOne({ userId }).deleteMany();
+        res.status(200).send({ msg: 'items deleted' });
+        
+    } catch (error) {
+        
+    }
+}

@@ -1,19 +1,16 @@
 import React, {useEffect, useState} from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+
 import ListDishes from './ListDishes/ListDishes';
 import './Dishes.css';
-import { getAllFoods } from '../../../Store/actions/foodActions';
 
-const Dishes = () => {
-    const foods = useSelector(state => state.foods.foods);
-    const dispatch = useDispatch();
+const Dishes = ({restaurant}) => {
+
+
     const [value, setValue] = useState('');
     const onChange = (e) => {
         setValue(e.target.value);
     }
-    useEffect(() => {
-       dispatch(getAllFoods())
-   }, [])
+
     return (
         <div className="dishes">
             <div className="dishes-header">
@@ -26,7 +23,7 @@ const Dishes = () => {
                         />
                     </header>    
                     <ListDishes
-                        foods={foods}
+                        foods={restaurant.items}
                         value={value}
                         />  
                 </div>     

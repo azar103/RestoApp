@@ -59,3 +59,11 @@ export const deleteItems = (userId) => async dispatch => {
         
     }
 }
+
+export const deleteAll = (userId) => async dispatch => {
+    try {
+        await axios.delete(`http://localhost:5000/api/cart/deleteAll/${userId}`);
+    } catch (error) {
+        
+    }
+}

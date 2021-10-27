@@ -17,7 +17,6 @@ exports.findItem = async (req, res, next) => {
         console.log(req.params);
     } catch (error) {
         console.dir("2");
-        
     }
 }
 
@@ -86,11 +85,11 @@ exports.getRestaurantByName = async (req, res, next) => {
 
 exports.getRestaurantById = async (req, res, next) => {
     try {
-        const { _id } = req.params;
-        const restaurant = await Restaurant.findById(_id);
+        const { restId } = req.params;
+        const restaurant = await Restaurant.findById(restId);
         res.status(200).send(restaurant);
     } catch (error) {
-        
+        console.log('error');        
     }
 }
 

@@ -25,7 +25,8 @@ export const getRestaurants = () => async dispatch => {
         })
         
     } catch (error) {
-        
+
+        console.dir(error);
     }
 }
 
@@ -49,7 +50,7 @@ export const getRestaurantById = (id) => async dispatch => {
             payload: res.data
         })
     } catch (error) {
-        
+        console.log(error);
     }
 
 }

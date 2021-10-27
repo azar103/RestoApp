@@ -4,9 +4,10 @@ import {useSelector, useDispatch} from 'react-redux';
 import './Header.css';
 import { logout } from '../../Store/actions/authActions';
 import { getCartItems } from '../../Store/actions/cartActions';
+import { useParams } from 'react-router';
 const Header = () => {
-    const isAuth = useSelector(state => state.auth.isAuth);
-    const user = useSelector(state => state.auth.user);
+    const { user, isAuth } = useSelector(state => state.auth);
+    const { restaurant } = useSelector(state => state.auth);
     const history = useHistory();
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cart.cart);
@@ -14,16 +15,17 @@ const Header = () => {
         dispatch(getCartItems())
         numberOfItems()
     }, [getCartItems])
+
     const numberOfItems = () => {
         
         if (user) {
-            return cartItems.filter(item => item.userId === user._id).length
+                return cartItems.filter(item => item.userId === user._id).length
         } else {
             return 0;
         }
             
     }
-     console.log(isAuth);
+
     return (
         <div className="header">
        {/** */} <div className="container">
@@ -62,7 +64,7 @@ const Header = () => {
                          
                                 </>
                             :
-                            <span id="menu">Admin <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            <span id="menu">{user.name} <i class="fa fa-chevron-down" aria-hidden="true"></i>
                                 <ul className="dropdown">
                                     <li><Link to="/admin/foods">Foods</Link></li>
                                     <li><Link to="/admin/orders">Orders</Link></li>
