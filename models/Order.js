@@ -43,6 +43,20 @@ const OrderSchema = new Schema({
             required: true,
             ref: "User"
         }
+    },
+    restaurant: {
+        name: {
+            type: String,
+            required: true
+        },
+        phone: {
+            type: String,
+            required: true
+        },
+        restaurantId: {
+            type: String,
+            required:true
+        }
     }
 }, {
     timestamps:true

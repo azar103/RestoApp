@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Redirect, useHistory, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
-import { addItemToCart, deleteAll, deleteItems } from '../../../../Store/actions/cartActions';
+import { addItemToCart, deleteAll, deleteItems, notNewOrder, setNewOrder } from '../../../../Store/actions/cartActions';
 import Swal from 'sweetalert2';
 const FoodItem = ({ item }) => {
     const API_ENDPOINT = process.env.API_ENDPOINT || 'http://localhost:5000';
@@ -16,6 +16,7 @@ const FoodItem = ({ item }) => {
     const { id } = useParams();
     const cartItems = useSelector(state => state.cart.cart);
     const index = cartItems.map((item) => item.restaurantId).indexOf(id);
+
     const addToCart = () => {
         const itemCart = {
             userId: user._id,
@@ -23,25 +24,20 @@ const FoodItem = ({ item }) => {
             item,
         }
         
-        
+        dispatch(notNewOrder());
         if (user._id) {
-        
+            
             dispatch(addItemToCart(itemCart));
+
             if (cartItems.length > 0 && index == -1) {
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                        dispatch(deleteAll(user._id));
-                    }
-                  })
-               
+                dispatch(setNewOrder());
+                Swal.fire(
+                    'New Order',
+                    'all the other commands are cleared, click again',
+                    'warning'
+                  )
+                dispatch(deleteAll(user._id));
+                  
             }
       }   
 
@@ -55,8 +51,8 @@ const FoodItem = ({ item }) => {
                     <span className="price">${item.price}</span>
                         <Link
                         to={`/restaurant/${id}`}
-                            className="btn opacity"
-                            onClick={addToCart}
+                        className="btn opacity"
+                        onClick={addToCart}                        
                         >add to cart</Link>    
                 </div>    
             </div>

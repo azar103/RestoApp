@@ -25,3 +25,5 @@ export const GET_ORDERS = "GET_ORDERS";
 export const POST_ORDER_FAILED = "POST_ORDER_FAILED";
 export const GET_RESTAURANTS = "GET_RESTAURANTS";
 export const GET_RESTAURANT = "GET_RESTAURANT";
+export const SET_NEW_ORDER = "SET_NEW_ORDER";
+export const NOT_NEW_ORDER = "NOT_NEW_ORDER";

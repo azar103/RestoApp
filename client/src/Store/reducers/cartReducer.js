@@ -1,8 +1,9 @@
-import { GET_CART_ITEMS, GET_TOTAL_PRICE, IS_LOADING } from '../actions/actionTypes';
+import { GET_CART_ITEMS, GET_TOTAL_PRICE, IS_LOADING, NOT_NEW_ORDER, SET_NEW_ORDER } from '../actions/actionTypes';
 const initState = {
     cart: [],
     isLoading: false,
-    totalPrice: 0
+    totalPrice: 0,
+    newOrder: false
 }
 
  const cartReducer = (state = initState, { type, payload }) => {
@@ -22,6 +23,16 @@ const initState = {
             return {
                 ...state,
                 totalPrice: state.cart.filter((item) => item.userId === payload).reduce((acc, val) => acc + parseFloat(val.item.price, 3), 0)
+            }
+        case SET_NEW_ORDER:
+            return {
+                ...state,
+                newOrder:true
+            }
+        case NOT_NEW_ORDER:
+            return {
+                ...state,
+                newOrder: false
             }
         default:
             return state;

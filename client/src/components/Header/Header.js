@@ -11,6 +11,7 @@ const Header = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cart.cart);
+    const { newOrder } = useSelector(state => state.cart);
     useEffect(() => {
         dispatch(getCartItems())
         numberOfItems()
@@ -19,7 +20,11 @@ const Header = () => {
     const numberOfItems = () => {
         
         if (user) {
-                return cartItems.filter(item => item.userId === user._id).length
+            if (newOrder) {
+                return 0;
+            }
+            return cartItems.filter(item => item.userId === user._id).length;
+            
         } else {
             return 0;
         }

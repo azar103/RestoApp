@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_CART_ITEMS, GET_TOTAL_PRICE } from './actionTypes';
+import { GET_CART_ITEMS, GET_TOTAL_PRICE, NOT_NEW_ORDER, SET_NEW_ORDER } from './actionTypes';
 import { returnErrors } from './errorActions';
 
 export const getCartItems = () => async dispatch => {
@@ -63,7 +63,26 @@ export const deleteItems = (userId) => async dispatch => {
 export const deleteAll = (userId) => async dispatch => {
     try {
         await axios.delete(`http://localhost:5000/api/cart/deleteAll/${userId}`);
+        dispatch(getCartItems());
     } catch (error) {
         
+    }
+}
+
+export const setNewOrder = () => async dispatch => {
+    try {
+        dispatch({
+            type:SET_NEW_ORDER
+        })
+    } catch (error) {      
+    }
+}
+
+export const notNewOrder = () => async dispatch => {
+    try {
+        dispatch({
+            type:NOT_NEW_ORDER
+        })
+    } catch (error) {      
     }
 }
