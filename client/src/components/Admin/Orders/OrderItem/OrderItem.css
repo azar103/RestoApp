@@ -5,6 +5,8 @@
     margin-bottom: 5px;
     padding: 7px;
     text-transform: capitalize;
+    box-shadow: var(--box-shadow);
+    position: relative;
 }
 .order_dashboard_box > p {
     color: gray;
@@ -53,4 +55,12 @@
 .btn_black{
     background: #000;
     
+}
+
+.icon-trash-order{
+    color: #a3a3a3;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
 }

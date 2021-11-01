@@ -5,6 +5,7 @@ import './Login.css'
 import { login} from '../../Store/actions/authActions';
 import { clearErrors } from '../../Store/actions/errorActions';
 import Loading from '../Loading/Loading';
+import image from '../../assets/images/delivery_back.jpg'
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const Login = () => {
     const isAdmin = useSelector(state => state.auth.user);
     const loading = useSelector(state => state.auth.isLoading);
     const [msg, setMsg] = useState(null);
+    
     useEffect(() => {
         if (error.id === 'LOGIN_ERROR') {
             setMsg(error.msg.msg)
@@ -51,6 +53,7 @@ const Login = () => {
     return (
         <main>
             <div className="container">
+            <div className="form-content">    
             <div className="form-login">
                 <h2>Login</h2>
                 {msg ? <div className="message-error">{msg}</div> : null}
@@ -79,7 +82,14 @@ const Login = () => {
                
                 </form>
         
-            </div>
+                    </div>
+                    <div
+                    className="image"
+                   >
+                        <img src={image} alt=""/>
+                   </div>
+                </div>
+             
             </div>
             </main>
         )

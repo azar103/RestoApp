@@ -41,3 +41,53 @@
 section > h2{
     text-transform: capitalize;
 }
+
+.home_header{
+    background: #FFC043;
+    margin-top: -40px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../../assets/images/home_header.svg');
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    padding-top: 40px;
+}
+
+.home_header > h2{
+    margin-top: 20px;
+}
+
+.home_header input {
+    width: 80%;
+}
+.section_header > h2{
+    margin-top: 50px;
+    font-size: 36px;
+    font-weight: 700;
+    font-family: UberMove, sans-serif;
+    text-transform: capitalize;
+}
+
+.section_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section_header a {
+    text-transform: capitalize;
+    text-decoration: underline;
+    color: #000;
+    font-size: 1.5m;
+}
+
+.icon-left-right{
+    background: #E2E2E2;
+    padding: 12px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-left: 15px;
+}

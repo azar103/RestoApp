@@ -1,4 +1,4 @@
-import { GET_ORDERS, POST_ORDER_FAILED } from "../actions/actionTypes"
+import { DELETE_ORDER, GET_ORDERS, POST_ORDER_FAILED } from "../actions/actionTypes"
 
 const initState = {
     orders: []

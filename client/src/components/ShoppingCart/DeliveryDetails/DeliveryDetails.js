@@ -10,8 +10,8 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
 
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cart.cart);
-    const user = useSelector(state => state.auth.user);
-
+    const { user }= useSelector(state => state.auth);
+    const { restaurant } = useSelector(state => state.restaurant);
     const [formData, setFormData] = useState({
         locality: '',
         street: '',
@@ -66,6 +66,11 @@ const DeliveryDetails = ({ onBackToCheckout, total, delivery, items }) => {
                 lastName: user.lastName,
                 userId: user._id,
                 address
+            },
+            restaurant: {
+                name: restaurant.name,
+                phone: restaurant.address.phoneNum,
+                restaurantId: restaurant._id
             }
         }
 

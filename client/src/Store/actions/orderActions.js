@@ -35,3 +35,12 @@ export const editOrder = (id, status) =>async dispatch => {
         
     }
 }
+
+export const deleteOrder = (id) => async dispatch => {
+    try {
+        await axios.delete(`http://localhost:5000/api/orders/${id}`);
+        dispatch(getOrders());
+    } catch (error) {
+        
+    }
+}

@@ -33,10 +33,10 @@ const Header = () => {
 
     return (
         <div className="header">
-       {/** */} <div className="container">
+        <div className="container">
         <div className="header-content">
            <Link to="/">
-                <i className="fas fa-utensils logo"></i><span className="logo_label">iki Resto</span>
+                GoFor<i className="fas fa-utensils logo"></i><span className="logo_label">unch</span>
             </Link>      
             <input type="checkbox" id="check" />
             <label for="check" className="checkbtn">

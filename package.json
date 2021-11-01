@@ -29,9 +29,12 @@
     "nodemon": "^2.0.13",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "react-elastic-carousel": "^0.11.5",
+    "react-slick": "^0.28.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-persist": "^6.0.0",
     "socket.io": "^4.2.0",
+    "styled-components": "^5.3.3",
     "sweetalert2": "^11.1.9"
   }
 }

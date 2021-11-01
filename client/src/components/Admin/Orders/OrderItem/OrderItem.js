@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react'
 import './OrderItem.css'
 import {useDispatch} from 'react-redux';
-import { editOrder } from '../../../../Store/actions/orderActions';
+import { deleteOrder, editOrder } from '../../../../Store/actions/orderActions';
 const OrderItem = ({ order: { _id, user, items, createdAt,status } }) => {
     const currentDate = new Date(createdAt);
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -80,6 +80,10 @@ const OrderItem = ({ order: { _id, user, items, createdAt,status } }) => {
                         </div>
               </div>             
             }
+            {status === "Cancelled" || status === "Completed" ? <i className="fa fa-trash icon-trash-order"
+                onClick={() =>  dispatch(deleteOrder(_id))
+            }
+            ></i> : null}
             
            
         </div>

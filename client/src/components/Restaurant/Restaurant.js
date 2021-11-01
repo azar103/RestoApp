@@ -12,28 +12,28 @@ const Restaurant = () => {
     const { restaurant, restaurants } = useSelector(state => state.restaurant);
     const { id } = useParams();
     const dispatch = useDispatch();
-
+    const API_ENDPOINT = process.env.API_ENDPOINT || 'http://localhost:5000';
     const findRestaurantById = (id) => {
         const restaurantObj = restaurants.find((item) => item._id === id);
         return restaurantObj;
     }
-
-    
-    
     useEffect(() => {
         const obj = findRestaurantById(id);
         dispatch(getRestaurantByName(obj.name));
-    
     }, [id])
     if (loading) {
         return <Loading />
     }
 
+    if (restaurant) {
         return (
             <div className="home">
                 <div className="home-header"
+                       
                 >
-                    <div className="overlay">
+                    <div className="overlay"
+               
+                    >
                         <h1>{restaurant.name}</h1>
                         <p>Address: {`${restaurant.address.street},${restaurant.address.locality}`}</p>
                         <p>Call: {restaurant.address.phoneNum}</p>
@@ -47,6 +47,12 @@ const Restaurant = () => {
             </div>
         )
 
+    } else {
+        return <div className="center">
+         No Restaurant Found
+        </div>
+     }
+        
    
 }
 

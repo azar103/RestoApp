@@ -1,7 +1,7 @@
 .orderBox {
 
     width: 30%;
-    height: auto;
+    height: 330px;
     padding: 10px;
     box-shadow: var(--box-shadow);
     margin-left: 20px;
@@ -22,6 +22,7 @@
 .orderBox .description {
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 .description_details > p {
     text-transform: capitalize;

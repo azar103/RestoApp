@@ -18,28 +18,30 @@ const FoodItem = ({ item }) => {
     const index = cartItems.map((item) => item.restaurantId).indexOf(id);
 
     const addToCart = () => {
-        const itemCart = {
-            userId: user._id,
-            restaurantId: id,
-            item,
-        }
-        
-        dispatch(notNewOrder());
-        if (user._id) {
-            
-            dispatch(addItemToCart(itemCart));
-
-            if (cartItems.length > 0 && index == -1) {
-                dispatch(setNewOrder());
-                Swal.fire(
-                    'New Order',
-                    'all the other commands are cleared, click again',
-                    'warning'
-                  )
-                dispatch(deleteAll(user._id));
-                  
+        if (isAuth) {
+            const itemCart = {
+                userId: user._id,
+                restaurantId: id,
+                item,
             }
-      }   
+            
+            dispatch(notNewOrder());
+            if (user._id) {
+                
+                dispatch(addItemToCart(itemCart));
+    
+                if (cartItems.length > 0 && index == -1) {
+                    dispatch(setNewOrder());
+                    Swal.fire(
+                        'New Order',
+                        'all the other commands are cleared, click again',
+                        'warning'
+                      )
+                    dispatch(deleteAll(user._id));
+                      
+                }
+          }   
+        } 
 
     }
     return (
@@ -49,11 +51,19 @@ const FoodItem = ({ item }) => {
                 <p>{item.description}</p>
                 <div className="btn-price">
                     <span className="price">${item.price}</span>
+                    {isAuth ?
                         <Link
                         to={`/restaurant/${id}`}
                         className="btn opacity"
                         onClick={addToCart}                        
-                        >add to cart</Link>    
+                        >add to cart</Link>
+                        :
+                        <Link
+                            to="/login"
+                            className="btn opacity"
+                        >add to cart</Link>
+                    }
+                         
                 </div>    
             </div>
             <div className="image">

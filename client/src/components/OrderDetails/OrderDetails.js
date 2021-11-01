@@ -25,17 +25,23 @@ const OrderDetails = () => {
         })
     },[])
    
-    return (
-        
+    return (  
         <main>
             <div className="container">
-            <h2>Order History</h2>    
-            <div style={{display:'flex', flexWrap:'wrap'}}> 
-                    {orderItems.map((order) => <OrderBox
-                        order={order}
-                        days={days}
-                    />)}
-            </div>   
+            <h2>Order History</h2>
+            {
+                orderItems.length > 0 ?
+                <div style={{display:'flex', flexWrap:'wrap'}}> 
+                {orderItems.map((order) => <OrderBox
+                    order={order}
+                    days={days}
+                />)}
+                </div>
+                :
+              <h3>No Orders Found</h3>          
+            }
+                
+        
             </div>
        </main>     
     )

@@ -127,3 +127,4 @@ exports.updateRestaurant = async (req, res, next) => {
         res.status(500).send({msg: error.message})
     }
 }
+

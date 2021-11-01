@@ -5,6 +5,7 @@ import './Register.css'
 import { register } from '../../Store/actions/authActions';
 import Loading from '../Loading/Loading';
 import { clearErrors } from '../../Store/actions/errorActions';
+import image from '../../assets/images/delivery_back.jpg'
 const Register = () => {
     const [formData, setFormData] = useState({
         firstName: '',
@@ -49,53 +50,64 @@ const Register = () => {
       if (isLoading) {
           return <Loading />
        }
-        return (
-            <div className="form-register">
-                <h2>Register</h2>
-                {msg ? <div className="message-error">{msg}</div> : null}
-                <form
-                    onSubmit={onSubmit}
-                >
+    return (
+            <div className="form-content">
+                <div className="form-register">
+                    <h2>Register</h2>
+                    {msg ? <div className="message-error">{msg}</div> : null}
+                    <form
+                        onSubmit={onSubmit}
+                    >
+                    <div className="first_last">
+                    <div className="first">    
                     <label>First Name:</label>
-                    <input type="text"
-                        placeholder="first name..."
-                        onChange={handleChangeForm}
-                        value={formData.firstName}
-                        name="firstName"
-                    />
-                    <label>Last Name:</label>
-                    <input type="text"
-                        placeholder="last name..."
-                        onChange={handleChangeForm}
-                        value={formData.lastName}
-                        name="lastName"
-                    />
-                    <label>Email:</label>
-                    <input type="text"
-                        placeholder="email..."
-                        onChange={handleChangeForm}
-                        name="email"
-                    />
-                    <label>Password:</label>
-                    <input type="password"
-                        placeholder="password..."
-                        onChange={handleChangeForm}
-                        value={formData.password}
-                        name="password"
-                    />
-                    <label>Confirm You Password:</label>
-                    <input type="password"
-                        placeholder="confirm your password..."
-                        onChange={handleChangeForm}
-                        value={formData.passwordConfirmed}
-                        name="passwordConfirmed"
-                    />
-                    <Link to="/login">
-                        if you have already an account, login here
-                    </Link>
-                    <input type="submit" value="Sign-Up" className="opacity" />
-        
-                </form>
+                        <input type="text"
+                            placeholder="first name..."
+                            onChange={handleChangeForm}
+                            value={formData.firstName}
+                            name="firstName"
+                        />
+                        </div>
+                        <div className="last">  
+                        <label>Last Name:</label>
+                        <input type="text"
+                            placeholder="last name..."
+                            onChange={handleChangeForm}
+                            value={formData.lastName}
+                            name="lastName"
+                        />
+                        </div>
+                    </div>    
+                        <label>Email:</label>
+                        <input type="text"
+                            placeholder="email..."
+                            onChange={handleChangeForm}
+                            name="email"
+                        />
+                        <label>Password:</label>
+                        <input type="password"
+                            placeholder="password..."
+                            onChange={handleChangeForm}
+                            value={formData.password}
+                            name="password"
+                        />
+                        <label>Confirm You Password:</label>
+                        <input type="password"
+                            placeholder="confirm your password..."
+                            onChange={handleChangeForm}
+                            value={formData.passwordConfirmed}
+                            name="passwordConfirmed"
+                        />
+                        <Link to="/login">
+                            if you have already an account, login here
+                        </Link>
+                        <input type="submit" value="Sign-Up" className="opacity" />
+            
+                    </form>
+                </div>
+                <div className="image">
+                  image
+                </div>
             </div>
     
         )

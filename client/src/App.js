@@ -29,7 +29,7 @@ function App() {
       <Header />  
       <Switch>
         <Route exact path="/" component={Home}/>
-        <ProtectedRoute path="/restaurant/:id"  component={Restaurant} />
+        <Route path="/restaurant/:id"  component={Restaurant} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/addRestaurant" component={AddRestaurant} />
@@ -40,7 +40,7 @@ function App() {
         <ProtectedRoute path="/admin/editFood/:_id" component={EditFood} />
         <ProtectedRoute path="/admin/orders" component={Orders}/>
       </Switch>
-      <Footer />
+
     </BrowserRouter>
   );
 }

@@ -13,6 +13,9 @@
     padding: 10px 0;
     flex-wrap: wrap;
 }
+.header-content > a{
+    color: black;
+}
 
 .header-content >a .logo_label {
     color: var(--primary-color);
@@ -27,7 +30,7 @@
 }
 .menu-icons > .btn-login{
     color: #fff;
-    background-color: #F54749;
+    background-color: var(--primary-color);
     padding: 10px;
     border-radius: 20px;
     display: block;
@@ -36,6 +39,7 @@
     justify-content: center;
     align-items: center;
     margin-left: 15px;
+    color: black;
 }
 .menu-icons >.icon {
     margin-right: 10px;

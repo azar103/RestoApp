@@ -5,13 +5,13 @@ import {useDispatch } from 'react-redux';
 const OrderBox = ({ order, days }) => {
     const total = order.items.reduce((accum, val) => accum + parseInt(val.item.price), 20);
     const dispatch = useDispatch();
+    console.log(order.restaurant.name);
     return (
         <div className="orderBox">
- 
             <div className="description">
                 <div className="img_state">
-                   {order.status  ==="Placed"&&<span>waiting</span>} 
-                    <p>Ordered on-{`${days[new Date(order.createdAt).getDay()]} ${new Date(order.createdAt).getDate()}/${new Date(order.createdAt).getMonth()+1}`}</p>
+                    {order.status === "Placed" && <span>waiting</span>}
+                    <p>Ordered on-{`${days[new Date(order.createdAt).getDay()]} ${new Date(order.createdAt).getDate()}/${new Date(order.createdAt).getMonth() + 1}`}</p>
                 </div>
                 <div className="description_details">
                     <h3>Order Summary</h3>
@@ -21,12 +21,12 @@ const OrderBox = ({ order, days }) => {
                             <span>{item.item.name}</span>
                             <span>{item.quantity}x{item.item.price/item.quantity}</span>
                         </div>)}
-                  <p style={{marginTop:"20px"}}>Total Amount - {total}</p>
+                  <p style={{marginTop:"20px"}}>Total Amount - {total}$</p>
                     </div>
                     <div className="line"></div>
-                    <p>ordered from-White Palace Grill</p>
-                </div>
-                <div className="status">
+                <p>ordered from-{order.restaurant.name}</p>
+            </div>
+            <div className="status">
                     {
                         order.status === 'Cancelled' ?
                         <div className="status_color status_color_red"></div>
@@ -34,7 +34,7 @@ const OrderBox = ({ order, days }) => {
                         <div className="status_color status_color_green"></div>    
                     }               
                   <span>{order.status}</span>
-                </div>
+            </div>
                 {
                 order.status === "Placed" &&
                 <button className="btn opacity"

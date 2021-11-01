@@ -8,15 +8,20 @@ import { io } from 'socket.io-client';
 const Orders = () => {
     const dispatch = useDispatch();
     const { orders } = useSelector(state => state.order);
-    const { user: { _id } } = useSelector(state => state.auth);
-    console.log(orders);
+    const { user: { _id, name } } = useSelector(state => state.auth);
+    const restaurantOrders = orders.filter((order) => order.restaurant.name === name);
     return (
         <AdminDashboard>
-        <div className="orders_list">
-                {orders.map((order) => <OrderItem
-                   order={order}
-                />)}
-        </div>
+        {
+                restaurantOrders.length > 0 ?
+                <div className="orders_list">
+                    {orders.filter((order) => order.restaurant.name === name).map((order) => <OrderItem
+                    order={order}
+                    />)}                        
+                </div>
+                    :
+                <h3>No Orders Found</h3>
+        }    
         </AdminDashboard>
     )
 }

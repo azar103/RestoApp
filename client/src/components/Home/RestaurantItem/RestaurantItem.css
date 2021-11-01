@@ -22,7 +22,7 @@
 
 .restaurant_footer > .button_section > a{
     min-width: 180px;
-    color: white;
+    color: black;
     padding: 5px;
     border-radius: 4px;
     margin-top: 5px;
@@ -30,6 +30,7 @@
     display: block;
     background: var(--primary-color);
     text-align: center;
+    font-weight: bold;
 }
 
 .button_section {

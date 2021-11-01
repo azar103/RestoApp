@@ -34,3 +34,7 @@ footer {
 .footer_content >.business_section  > button{
     text-transform: capitalize;
 }
+
+button{
+    color: black;
+}

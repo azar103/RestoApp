@@ -46,3 +46,13 @@ exports.editStatus = async (req, res, next) => {
         res.status(500).send({ error });
     }
 }
+
+exports.deleteOrder = async (req, res, next) => {
+    try {
+        const { _id } = req.params;
+        await Order.findByIdAndRemove({ _id });
+        res.status(200).send({ msg: "order deleted" });
+    } catch (error) {
+        res.status(500).send({ error });   
+    }
+}
