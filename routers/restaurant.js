@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
         cb(null, `${Date.now()}_${file.originalname}`);
     }
 });
-const upload = multer({ storage }).single('urlImg');
+const upload = multer({ storage }).single('imageUrl');
 router.post('/upload', upload, (req, res, next) => {
     res.send({
         filename: req.file.originalname,

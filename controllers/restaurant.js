@@ -22,9 +22,9 @@ exports.findItem = async (req, res, next) => {
 
 exports.createRestaurant = async (req, res, next) => {
     try {
-        const { name,items, minOrderAmount, street, locality, zip, lat, lng, phoneNum, email, password, passwordConfirmed} = req.body;
+        const { name,items, minOrderAmount, street, locality, zip, phoneNum, email, password, passwordConfirmed} = req.body;
         const { file } = req;
-     
+         console.log(req.body);
        let account = await Account.findOne({ email });
         if (account) {
             return res.status(500).send({ msg: 'Restaurant already exist' });
@@ -48,8 +48,6 @@ exports.createRestaurant = async (req, res, next) => {
                 street,
                 locality,
                 zip,
-                lat,
-                lng,
                 phoneNum
             },
             items,
@@ -67,6 +65,7 @@ exports.createRestaurant = async (req, res, next) => {
             user, token: "bearer " + token, msg: 'restaurant added  successfully'
         });
     } catch (error) {
+        console.dir(error);
 
         res.status(500).send(error);
     }

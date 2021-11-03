@@ -2,11 +2,15 @@
     background-color: #fff;
   border: 1px solid #ccc;
   outline: none;
-  padding: 20px;
+
   font-size: .875rem;
   margin-right: 10px;
   color: #4a4a4a;
   width: 100%;
+  background-image: url('../../assets/images/map-spot.png');
+  background-position: top 25px left 10px;
+  background-repeat: no-repeat;
+  background-size: 1.5em;
 }
 
 .home_header{

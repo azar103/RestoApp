@@ -20,7 +20,7 @@
 }
 input[type="submit"]{
     background: var(--primary-color);
-    color: white;
+    color: black;
     min-width: 200px;
     border-radius: 13px;
     border:none;

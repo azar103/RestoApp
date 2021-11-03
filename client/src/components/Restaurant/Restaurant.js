@@ -29,10 +29,8 @@ const Restaurant = () => {
         return (
             <div className="home">
                 <div className="home-header"
-                       
                 >
                     <div className="overlay"
-               
                     >
                         <h1>{restaurant.name}</h1>
                         <p>Address: {`${restaurant.address.street},${restaurant.address.locality}`}</p>

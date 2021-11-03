@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import './Home.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { getRestaurants } from '../../Store/actions/restaurantActions';
@@ -12,13 +12,32 @@ const Home = () => {
     const { restaurants } = useSelector(state => state.restaurant);
     let { user } = useSelector(state => state.auth);
     const dispatch = useDispatch();
+    const [index, seIndex] = useState(0);
+    const [value, setValue] = useState('');
+    const [pressed, setPressed] = useState(false);
+
     useEffect(() => {
         dispatch(getRestaurants());
     }, [])
+    const onChange = (e) => {
+        setValue(e.target.value);
+    }
     const settings = {
         infinite: false,
   
         sliderToShow: 1
+    }
+    const filterArray = (arr) => {
+        return arr.filter((restaurant) => restaurant.address.locality.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+    }
+
+    const onPress = (e) => {
+        if (e.key === 'Enter') {
+            setPressed(true);
+        } else {
+            setPressed(false);
+        }
+
     }
     
     if (!user || user.account.role === "ROLE_USER") {
@@ -30,7 +49,10 @@ const Home = () => {
                     <input type="text" className="input_search_restaurants"
                     placeholder="Enter your delivery address"
                     autoComplete="off"
-                    style={{ padding: "20px" }}
+                       style={{ padding: "30px 0px 30px 50px" }}
+                        value={value}
+                        onChange={onChange}
+                        onKeyPress={onPress}                       
                 />
         </div>
      
@@ -47,14 +69,15 @@ const Home = () => {
                         </div>
                         <div className="restaurants_list">
                    
-                            {restaurants.length > 0 ?
-                               
-                                restaurants.map((restaurant) => <RestaurantItem
+                            {pressed?                         
+                                  filterArray(restaurants).map((restaurant) => <RestaurantItem
                                     item={restaurant}
                                 />)
                              
                                 :
-                                <p>No Restaurants currently available in your area</p>
+                                restaurants.map((restaurant) => <RestaurantItem
+                                    item={restaurant}/>
+                                )
                             }
                    
              

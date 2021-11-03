@@ -22,7 +22,7 @@ footer {
 .business_section > button{
     background: var(--primary-color);
     padding: 10px;
-    color: white;
+    color: black;
 }
 .footer_content > h3{
     text-transform: capitalize;

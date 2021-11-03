@@ -7,7 +7,7 @@ const Footer = () => {
   const history = useHistory();
   const location = useLocation();
 
-  if (!isLoading && location.pathname !== "/addRestaurant") {
+  if (!isLoading && (location.pathname !== "/addRestaurant" || location.pathname!== "/admin"  )) {
     return (
       <footer>
         <div className="container">

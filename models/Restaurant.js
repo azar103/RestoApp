@@ -23,14 +23,6 @@ const RestaurantSchema = new Schema({
             type: Number,
             required: true
         },
-        lat: {
-            type: Number,
-            required: true
-        },
-        lng: {
-            type: Number,
-            required: true
-        },
         phoneNum: {
             type: String,
             required: true

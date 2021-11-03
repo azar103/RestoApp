@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './RestaurantItem.css'
 const RestaurantItem = ({item: {imageUrl, name, _id}}) => {
     const API_ENDPOINT = process.env.API_ENDPOINT || 'http://localhost:5000';
+ 
     return (
         <div className="restaurant">
             <div className="image">

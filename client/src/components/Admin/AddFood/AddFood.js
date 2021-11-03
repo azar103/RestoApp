@@ -18,7 +18,6 @@ const AddFood = () => {
     const [msg, setMsg] = useState(null);
     const { error } = useSelector(state => state.error);
     const { user } = useSelector(state => state.auth)
-    console.log(user.account);
     /*useEffect(() => {
         if (error.id === 'CREATE_FOOD_ERROR') {
             setMsg(error.msg.msg)
@@ -44,8 +43,6 @@ const AddFood = () => {
         form.append('price', formData.price);
         form.append('description', formData.description);
         form.append('urlImg', fieldValue);
- 
-  
         form.append('ownerId',user.account._id);
         dispatch(saveFood(form));
        if(msg===null)

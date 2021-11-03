@@ -15,8 +15,6 @@ const AddRestaurant = () => {
         street: '',
         locality: '',
         zip: '',
-        lat: '',
-        lng: '',
         phoneNum:'',
         minOrderAmount: '',
         password: '',
@@ -48,15 +46,14 @@ const AddRestaurant = () => {
         form.append('street', formData.street);
         form.append('locality', formData.locality);
         form.append('zip', formData.zip);
-        form.append('lat', formData.lat);
-        form.append('lng', formData.lng);
         form.append('phoneNum', formData.phoneNum);
         form.append('minOrderAmount', formData.minOrderAmount);
         form.append('password', formData.password);
         form.append('passwordConfirmed', formData.passwordConfirmed);
+
         dispatch(createRestaurant(form));
         dispatch(logout());
-         history.push('/login');
+         //history.push('/');
     }
 
     return (
@@ -109,18 +106,6 @@ const AddRestaurant = () => {
                                 <input type="text"
                                     name="phoneNum" placeholder="Phone Number*"
                                     value={formData.phoneNum}
-                                    onChange={onChange}
-                                />
-                                <input type="text"
-                                    name="lat"
-                                    placeholder="Latitude*"
-                                    value={formData.lat}
-                                    onChange={onChange}
-                                />
-                                <input type="text"
-                                        name="lng"
-                                       placeholder="Longitude*"
-                                    value={formData.lng}
                                     onChange={onChange}
                                 />
                             </div>

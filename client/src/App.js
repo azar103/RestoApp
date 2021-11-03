@@ -23,6 +23,9 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCurrentUser());
+    window.scrollTo({
+      top:0
+    })
   }, [])
   return (
     <BrowserRouter>
@@ -40,7 +43,7 @@ function App() {
         <ProtectedRoute path="/admin/editFood/:_id" component={EditFood} />
         <ProtectedRoute path="/admin/orders" component={Orders}/>
       </Switch>
-
+      <Footer />
     </BrowserRouter>
   );
 }
